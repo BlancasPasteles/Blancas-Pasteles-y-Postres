@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <title>Blanca's Pasteles y Postres</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #fff3f8;
       color: #8a2c6b;
     }
@@ -22,13 +24,17 @@
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 28px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     .nav a {
       text-decoration: none;
       color: #8a2c6b;
       margin-left: 20px;
+      font-weight: 500;
     }
 
     .hero {
@@ -47,6 +53,8 @@
     .hero-text h1 {
       font-size: 48px;
       margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
     }
 
     .hero-text p {
@@ -58,19 +66,20 @@
       width: 330px;
       border-radius: 25px;
       border: 5px solid #f8a5c2;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
     }
 
     .button {
       background-color: #ff69b4;
       color: white;
-      padding: 15px 28px;
+      padding: 14px 28px;
       text-decoration: none;
-      font-size: 18px;
-      border-radius: 12px;
+      font-size: 17px;
+      border-radius: 30px;
       display: inline-block;
       margin-top: 15px;
-      font-weight: bold;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
 
     .section {
@@ -79,8 +88,10 @@
     }
 
     .section h2 {
-      font-size: 32px;
+      font-size: 34px;
       margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
     }
 
     .section p {
@@ -101,17 +112,22 @@
       background-color: white;
       width: 240px;
       padding: 20px;
-      border-radius: 18px;
+      border-radius: 20px;
       border: 2px solid #f8a5c2;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .card h3, .step h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
     }
 
     .photo-card {
       background-color: white;
       width: 260px;
-      border-radius: 18px;
+      border-radius: 20px;
       border: 2px solid #f8a5c2;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       overflow: hidden;
     }
 
@@ -125,6 +141,8 @@
     .photo-card h3 {
       padding: 10px;
       margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
     }
 
     .order-section {
@@ -132,9 +150,15 @@
       margin: 30px auto;
       padding: 35px 20px;
       max-width: 850px;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 3px solid #f8a5c2;
       text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .order-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
     }
 
     .social-section {
@@ -143,15 +167,21 @@
       background: white;
     }
 
+    .social-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+    }
+
     .social-btn {
       display: inline-block;
       margin: 10px;
       padding: 14px 25px;
-      border-radius: 10px;
+      border-radius: 30px;
       text-decoration: none;
       color: white;
-      font-weight: bold;
+      font-weight: 600;
       background: #ff69b4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
 
     .contact {
@@ -159,6 +189,11 @@
       padding: 35px;
       background-color: #f8d7e6;
       margin-top: 20px;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
     }
 
     .whatsapp-float {
@@ -236,17 +271,17 @@
 
   <div class="photo-grid">
     <div class="photo-card">
-      <img src="cake2.jpg">
+      <img src="cake2.jpg" alt="Wedding Cake">
       <h3>Wedding Cake</h3>
     </div>
 
     <div class="photo-card">
-      <img src="cake5.jpg">
+      <img src="cake5.jpg" alt="Barbie Cake">
       <h3>Barbie Cake</h3>
     </div>
 
     <div class="photo-card">
-      <img src="cake6.jpg">
+      <img src="cake6.jpg" alt="Toy Story Cake">
       <h3>Toy Story Cake</h3>
     </div>
   </div>
@@ -259,10 +294,25 @@
   <p>Escoge tu diseño, sabor, relleno y manda los detalles fácilmente.</p>
 
   <div class="steps">
-    <div class="step"><h3>1. Elige tu idea</h3><p>Manda una foto o inspírate con nuestro trabajo.</p></div>
-    <div class="step"><h3>2. Escoge sabor</h3><p>Selecciona sabor, relleno y tamaño.</p></div>
-    <div class="step"><h3>3. Manda detalles</h3><p>Fecha, colores y mensaje del pastel.</p></div>
-    <div class="step"><h3>4. Confirmamos</h3><p>Nos comunicamos contigo para finalizar.</p></div>
+    <div class="step">
+      <h3>1. Elige tu idea</h3>
+      <p>Manda una foto o inspírate con nuestro trabajo.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. Escoge sabor</h3>
+      <p>Selecciona sabor, relleno y tamaño.</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Manda detalles</h3>
+      <p>Fecha, colores y mensaje del pastel.</p>
+    </div>
+
+    <div class="step">
+      <h3>4. Confirmamos</h3>
+      <p>Nos comunicamos contigo para finalizar.</p>
+    </div>
   </div>
 </div>
 

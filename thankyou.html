@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Sabores y Rellenos - Blanca's</title>
+  <title>Gracias - Blanca's</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
@@ -38,82 +38,30 @@
       font-weight: 500;
     }
 
-    header {
-      padding: 45px 20px 20px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 42px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .intro {
-      max-width: 650px;
-      margin: 20px auto;
-      padding: 0 20px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .menu-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-      padding: 30px;
-    }
-
-    .menu-card {
+    .thankyou-box {
       background: white;
-      width: 320px;
-      padding: 25px;
-      border-radius: 20px;
-      border: 2px solid #f8a5c2;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .menu-card h2 {
-      margin-top: 0;
-      font-size: 28px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 18px;
-    }
-
-    li {
-      padding: 10px;
-      border-bottom: 1px solid #f8d7e6;
-    }
-
-    li:last-child {
-      border-bottom: none;
-    }
-
-    .order-section {
-      background: #f8d7e6;
-      margin: 20px auto 35px;
-      padding: 35px 20px;
-      max-width: 800px;
-      border-radius: 22px;
+      max-width: 750px;
+      margin: 80px auto;
+      padding: 45px 30px;
+      border-radius: 25px;
       border: 3px solid #f8a5c2;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
-    .order-section h2,
-    .social-section h2 {
-      font-size: 32px;
+    h1 {
       font-family: 'Playfair Display', serif;
+      font-size: 46px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
     }
 
     .button {
       display: inline-block;
-      margin: 10px;
+      margin: 15px 10px;
       text-decoration: none;
       background: #ff69b4;
       color: white;
@@ -131,6 +79,11 @@
       text-align: center;
       padding: 35px;
       background: white;
+    }
+
+    .social-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
     }
 
     .social-btn {
@@ -177,16 +130,12 @@
         display: inline-block;
       }
 
+      .thankyou-box {
+        margin: 40px 20px;
+      }
+
       h1 {
-        font-size: 34px;
-      }
-
-      .menu-card {
-        width: 85%;
-      }
-
-      .order-section {
-        margin: 20px;
+        font-size: 36px;
       }
     }
   </style>
@@ -205,50 +154,18 @@
   </div>
 </div>
 
-<header>
-  <h1>Sabores y Rellenos</h1>
-</header>
+<div class="thankyou-box">
+  <h1>¡Gracias por tu orden! 💕</h1>
+  <p>
+    Hemos recibido los detalles de tu pastel. Nos comunicaremos contigo pronto
+    para confirmar la fecha, diseño, sabor y todos los detalles.
+  </p>
 
-<p class="intro">
-  Elige el sabor de tu pastel y combínalo con el relleno que más te guste.
-</p>
+  <p>
+    Si quieres mandar más información o una foto adicional, también puedes escribirnos por WhatsApp.
+  </p>
 
-<div class="menu-container">
-
-  <div class="menu-card">
-    <h2>Sabores de Pastel</h2>
-    <ul>
-      <li>Fresa</li>
-      <li>Chocolate</li>
-      <li>Vainilla</li>
-      <li>Red Velvet</li>
-      <li>Marble: Chocolate / Vainilla</li>
-    </ul>
-  </div>
-
-  <div class="menu-card">
-    <h2>Rellenos</h2>
-    <ul>
-      <li>Fresas con crema</li>
-      <li>Fresas con crema, coco y nuez</li>
-      <li>Coco y nuez</li>
-      <li>Nutella con fresas</li>
-      <li>Mocha, coco y nuez</li>
-      <li>Duraznos con crema</li>
-      <li>Mango</li>
-      <li>Cajeta y nuez</li>
-      <li>Chispas de chocolate</li>
-      <li>Flan</li>
-    </ul>
-  </div>
-
-</div>
-
-<div class="order-section">
-  <h2>¿Ya sabes qué sabor quieres?</h2>
-  <p>Haz tu orden y dinos el sabor, relleno, tamaño y diseño que tienes en mente.</p>
-
-  <a class="button" href="order.html">Ordenar Ahora</a>
+  <a class="button" href="https://wa.me/19012893587" target="_blank">Enviar WhatsApp</a>
   <a class="button home-button" href="index.html">Volver al Inicio</a>
 </div>
 
