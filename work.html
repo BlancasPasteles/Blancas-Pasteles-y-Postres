@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Trabajo Anterior - Blanca's</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5eaf0;
+      color: #8a2c6b;
+      margin: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #f8d7e6;
+      padding: 25px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 35px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 35px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .order-section {
+      background: #f8d7e6;
+      margin: 20px auto 30px;
+      padding: 35px 20px;
+      max-width: 800px;
+      border-radius: 20px;
+      border: 3px solid #f8a5c2;
+    }
+
+    .order-section h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .order-section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    a.button {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      background: #ff69b4;
+      color: white;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    a.home-button {
+      background: #8a2c6b;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      text-align: center;
+    }
+
+    .popup-content {
+      margin-top: 3%;
+      display: inline-block;
+      background: #fff0f6;
+      padding: 20px;
+      border-radius: 20px;
+      border: 4px solid #ff69b4;
+    }
+
+    .popup img {
+      max-width: 700px;
+      max-height: 500px;
+      border-radius: 15px;
+    }
+
+    .popup h2 {
+      margin: 15px 0 5px 0;
+    }
+
+    .popup p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    @media (max-width: 700px) {
+      .popup img {
+        max-width: 90%;
+        max-height: 400px;
+      }
+
+      .order-section {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Trabajo Anterior</h1>
+</header>
+
+<div class="gallery">
+
+  <div class="card" onclick="openImage('cake1.jpg','Lego Birthday Cake','Pastel personalizado con tema de Lego para cumpleaños.')"><img src="cake1.jpg"></div>
+
+  <div class="card" onclick="openImage('cake2.jpg','Wedding Cake','Pastel elegante para boda con diseño especial.')"><img src="cake2.jpg"></div>
+
+  <div class="card" onclick="openImage('cake3.jpg','Custom Cake','Pastel personalizado hecho al gusto del cliente.')"><img src="cake3.jpg"></div>
+
+  <div class="card" onclick="openImage('cake4.jpg','Music Themed Cake','Pastel inspirado en la música para una celebración especial.')"><img src="cake4.jpg"></div>
+
+  <div class="card" onclick="openImage('cake5.jpg','Barbie Themed Cake','Pastel con tema de Barbie, colorido y divertido.')"><img src="cake5.jpg"></div>
+
+  <div class="card" onclick="openImage('cake6.jpg','Toy Story Themed Cake','Pastel inspirado en Toy Story para cumpleaños.')"><img src="cake6.jpg"></div>
+
+  <div class="card" onclick="openImage('cake7.jpg','Easter Themed Cake','Pastel con tema de Pascua, perfecto para la temporada.')"><img src="cake7.jpg"></div>
+
+  <div class="card" onclick="openImage('cake8.jpg','Flan','Flan clásico, dulce y cremoso.')"><img src="cake8.jpg"></div>
+
+  <div class="card" onclick="openImage('cake9.jpg','Las Vegas Themed Cake','Pastel inspirado en Las Vegas para una celebración única.')"><img src="cake9.jpg"></div>
+
+  <div class="card" onclick="openImage('cake10.jpg','Cologne Themed Cake','Pastel personalizado con tema de perfume.')"><img src="cake10.jpg"></div>
+
+</div>
+
+<div class="order-section">
+  <h2>¿Listo para ordenar tu pastel?</h2>
+  <p>Elige tu diseño favorito o manda tu propia idea para crear un pastel personalizado.</p>
+
+  <a class="button" href="order.html">Ordenar Ahora</a>
+  <a class="button home-button" href="index.html">Volver al Inicio</a>
+</div>
+
+<div id="popup" class="popup" onclick="closeImage()">
+  <div class="popup-content">
+    <img id="popup-img" src="">
+    <h2 id="popup-title"></h2>
+    <p id="popup-desc"></p>
+  </div>
+</div>
+
+<script>
+function openImage(src,title,desc) {
+  document.getElementById("popup").style.display = "block";
+  document.getElementById("popup-img").src = src;
+  document.getElementById("popup-title").innerText = title;
+  document.getElementById("popup-desc").innerText = desc;
+}
+
+function closeImage() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
+
+</body>
+</html>

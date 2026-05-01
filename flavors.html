@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sabores y Rellenos - Blanca's</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff3f8;
+      color: #8a2c6b;
+      margin: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 35px;
+      background-color: #f8d7e6;
+      font-weight: bold;
+    }
+
+    .logo {
+      font-size: 22px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #8a2c6b;
+      margin-left: 20px;
+    }
+
+    header {
+      padding: 45px 20px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px;
+    }
+
+    .menu-card {
+      background: white;
+      width: 320px;
+      padding: 25px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .menu-card h2 {
+      margin-top: 0;
+      font-size: 28px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 18px;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #f8d7e6;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .order-section {
+      background: #f8d7e6;
+      margin: 20px auto 35px;
+      padding: 35px 20px;
+      max-width: 800px;
+      border-radius: 20px;
+      border: 3px solid #f8a5c2;
+    }
+
+    .order-section h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .order-section p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      background: #ff69b4;
+      color: white;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .home-button {
+      background: #8a2c6b;
+    }
+
+    footer {
+      background-color: #f8d7e6;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav a {
+        margin: 8px;
+        display: inline-block;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .menu-card {
+        width: 85%;
+      }
+
+      .order-section {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="logo">Blanca's Pasteles</div>
+
+  <div class="nav">
+    <a href="index.html">Inicio</a>
+    <a href="work.html">Trabajo Anterior</a>
+    <a href="flavors.html">Sabores</a>
+    <a href="order.html">Ordenar</a>
+  </div>
+</div>
+
+<header>
+  <h1>Sabores y Rellenos</h1>
+</header>
+
+<p class="intro">
+  Elige el sabor de tu pastel y combínalo con el relleno que más te guste.
+</p>
+
+<div class="menu-container">
+
+  <div class="menu-card">
+    <h2>Sabores de Pastel</h2>
+    <ul>
+      <li>Fresa</li>
+      <li>Chocolate</li>
+      <li>Vainilla</li>
+      <li>Red Velvet</li>
+      <li>Marble: Chocolate / Vainilla</li>
+    </ul>
+  </div>
+
+  <div class="menu-card">
+    <h2>Rellenos</h2>
+    <ul>
+      <li>Fresas con crema</li>
+      <li>Fresas con crema, coco y nuez</li>
+      <li>Coco y nuez</li>
+      <li>Nutella con fresas</li>
+      <li>Mocha, coco y nuez</li>
+      <li>Duraznos con crema</li>
+      <li>Mango</li>
+      <li>Cajeta y nuez</li>
+      <li>Chispas de chocolate</li>
+      <li>Flan</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="order-section">
+  <h2>¿Ya sabes qué sabor quieres?</h2>
+  <p>Haz tu orden y dinos el sabor, relleno, tamaño y diseño que tienes en mente.</p>
+
+  <a class="button" href="order.html">Ordenar Ahora</a>
+  <a class="button home-button" href="index.html">Volver al Inicio</a>
+</div>
+
+<footer>
+  © 2026 Blanca's Pasteles y Postres
+</footer>
+
+</body>
+</html>

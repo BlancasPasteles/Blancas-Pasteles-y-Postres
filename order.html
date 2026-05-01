@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordenar - Blanca's</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fff3f8;
+      color: #8a2c6b;
+      margin: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 35px;
+      background-color: #f8d7e6;
+      font-weight: bold;
+    }
+
+    .logo {
+      font-size: 22px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #8a2c6b;
+      margin-left: 20px;
+    }
+
+    header {
+      padding: 45px 20px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .form-box {
+      background: white;
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 35px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .form-section-title {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #f8a5c2;
+      border-radius: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    textarea {
+      height: 130px;
+      resize: none;
+    }
+
+    .note {
+      font-size: 13px;
+      margin-top: 6px;
+      color: #8a2c6b;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 25px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .submit-btn:hover {
+      background-color: #e7549f;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 15px 10px 30px;
+      text-decoration: none;
+      background: #ff69b4;
+      color: white;
+      padding: 13px 24px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .home-button {
+      background: #8a2c6b;
+    }
+
+    footer {
+      background-color: #f8d7e6;
+      padding: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav a {
+        margin: 8px;
+        display: inline-block;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .form-box {
+        margin: 20px;
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="logo">Blanca's Pasteles</div>
+
+  <div class="nav">
+    <a href="index.html">Inicio</a>
+    <a href="work.html">Trabajo Anterior</a>
+    <a href="flavors.html">Sabores</a>
+    <a href="order.html">Ordenar</a>
+  </div>
+</div>
+
+<header>
+  <h1>Ordenar Ahora</h1>
+</header>
+
+<p class="intro">
+  Llena esta forma con los detalles de tu pastel. Nos comunicaremos contigo para confirmar tu orden.
+</p>
+
+<div class="form-box">
+  <form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data">
+
+    <input type="hidden" name="_subject" value="Nueva Orden de Pastel">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <h2 class="form-section-title">Detalles de tu Orden</h2>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
+
+    <label for="telefono">Número de Teléfono</label>
+    <input type="tel" id="telefono" name="Telefono" placeholder="(000)-000-0000" required>
+
+    <label for="sabor">Sabor de Pastel</label>
+    <select id="sabor" name="Sabor de Pastel" required>
+      <option>Selecciona un sabor</option>
+      <option>Fresa</option>
+      <option>Chocolate</option>
+      <option>Vainilla</option>
+      <option>Red Velvet</option>
+      <option>Marble: Chocolate / Vainilla</option>
+    </select>
+
+    <label for="relleno">Relleno</label>
+    <select id="relleno" name="Relleno" required>
+      <option>Selecciona un relleno</option>
+      <option>Fresas con crema</option>
+      <option>Fresas con crema, coco y nuez</option>
+      <option>Coco y nuez</option>
+      <option>Nutella con fresas</option>
+      <option>Mocha, coco y nuez</option>
+      <option>Duraznos con crema</option>
+      <option>Mango</option>
+      <option>Cajeta y nuez</option>
+      <option>Chispas de chocolate</option>
+      <option>Flan</option>
+    </select>
+
+    <label for="tamano">Tamaño del Pastel</label>
+    <select id="tamano" name="Tamaño" required>
+      <option>Selecciona un tamaño</option>
+      <option>Pequeño</option>
+      <option>Mediano</option>
+      <option>Grande</option>
+      <option>Dos pisos</option>
+      <option>No estoy seguro/a</option>
+    </select>
+
+    <label for="fecha">Fecha que lo necesitas</label>
+    <input type="date" id="fecha" name="Fecha" required>
+
+    <label for="mensaje">Detalles especiales</label>
+    <textarea id="mensaje" name="Detalles Especiales" placeholder="Tema del pastel, colores, tamaño, mensaje en el pastel, cantidad de personas, etc."></textarea>
+
+    <label for="foto">Foto de referencia opcional</label>
+    <input type="file" id="foto" name="Foto de Referencia" accept="image/*">
+    <p class="note">Puedes agregar una foto para mostrar el estilo o diseño que quieres.</p>
+
+    <button class="submit-btn" type="submit">Enviar Orden</button>
+
+  </form>
+</div>
+
+<a class="button" href="flavors.html">Ver Sabores</a>
+<a class="button home-button" href="index.html">Volver al Inicio</a>
+
+<footer>
+  © 2026 Blanca's Pasteles y Postres
+</footer>
+
+</body>
+</html>
