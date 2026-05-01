@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blanca's Cakes and Desserts</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff3f8;
+      color: #8a2c6b;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 35px;
+      background-color: #f8d7e6;
+      font-weight: bold;
+    }
+
+    .logo img {
+      width: 180px;
+      height: auto;
+      display: block;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #8a2c6b;
+      margin-left: 18px;
+      font-weight: 500;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #8a2c6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      padding: 60px 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      max-width: 480px;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .hero img {
+      width: 330px;
+      border-radius: 25px;
+      border: 5px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .button {
+      background-color: #ff69b4;
+      color: white;
+      padding: 14px 28px;
+      text-decoration: none;
+      font-size: 17px;
+      border-radius: 30px;
+      display: inline-block;
+      margin-top: 15px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .section {
+      text-align: center;
+      padding: 45px 25px;
+    }
+
+    .section h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .section p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 25px;
+      line-height: 1.5;
+    }
+
+    .photo-grid, .steps, .price-grid, .size-grid {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .step, .price-card, .size-card {
+      background-color: white;
+      width: 240px;
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .step h3, .price-card h3, .size-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+    }
+
+    .photo-card {
+      background-color: white;
+      width: 260px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-card h3 {
+      padding: 10px;
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+    }
+
+    .price-card p, .size-card p {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .order-section {
+      background: #f8d7e6;
+      margin: 30px auto;
+      padding: 35px 20px;
+      max-width: 850px;
+      border-radius: 22px;
+      border: 3px solid #f8a5c2;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .order-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+    }
+
+    .social-section {
+      text-align: center;
+      padding: 35px;
+      background: white;
+    }
+
+    .social-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+    }
+
+    .social-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      background: #ff69b4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .contact {
+      text-align: center;
+      padding: 35px;
+      background-color: #f8d7e6;
+      margin-top: 20px;
+    }
+
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      padding: 15px;
+      background-color: #f8d7e6;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      .nav a {
+        margin: 8px;
+        display: inline-block;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .hero img {
+        width: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <img src="logo.png" alt="Blanca's Pasteles Logo">
+  </div>
+
+  <div class="nav">
+    <a href="index-en.html">Home</a>
+    <a href="work-en.html">Gallery</a>
+    <a href="flavors-en.html">Flavors</a>
+    <a href="order-en.html">Order</a>
+    <span class="lang-switch"><a href="index.html">Español</a> | <strong>English</strong></span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>Cakes and Desserts Made with Love 💕</h1>
+    <p>
+      Welcome to Blanca's Cakes and Desserts. We create custom cakes
+      for birthdays, weddings, special events, and family celebrations.
+    </p>
+
+    <a class="button" href="order-en.html">Order Now</a>
+  </div>
+
+  <img src="Rellenos.jpeg" alt="Cakes">
+</div>
+
+<div class="section">
+  <h2>Featured Cakes</h2>
+  <p>Take a look at some of our favorite custom creations.</p>
+
+  <div class="photo-grid">
+    <div class="photo-card">
+      <img src="cake2.jpg" alt="Wedding Cake">
+      <h3>Wedding Cake</h3>
+    </div>
+
+    <div class="photo-card">
+      <img src="cake5.jpg" alt="Barbie Cake">
+      <h3>Barbie Cake</h3>
+    </div>
+
+    <div class="photo-card">
+      <img src="cake6.jpg" alt="Toy Story Cake">
+      <h3>Toy Story Cake</h3>
+    </div>
+  </div>
+
+  <a class="button" href="work-en.html">See More Cakes</a>
+</div>
+
+<div class="section">
+  <h2>Starting Prices</h2>
+
+  <div class="price-grid">
+    <div class="price-card"><h3>Small Cake</h3><p>Starts at $50</p></div>
+    <div class="price-card"><h3>Medium Cake</h3><p>Starts at $80</p></div>
+    <div class="price-card"><h3>Large Cake</h3><p>Starts at $100</p></div>
+    <div class="price-card"><h3>Two Tier or More</h3><p>Starts at $150+</p></div>
+    <div class="price-card"><h3>Flan</h3><p>Starts at $40</p></div>
+    <div class="price-card"><h3>Cupcakes / Desserts</h3><p>Starts at $40</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Serving Size Guide</h2>
+
+  <div class="size-grid">
+    <div class="size-card"><h3>Small</h3><p>Serves about 10 to 20 people</p></div>
+    <div class="size-card"><h3>Medium</h3><p>Serves about 20 to 40 people</p></div>
+    <div class="size-card"><h3>Large</h3><p>Serves about 50 to 80 people</p></div>
+    <div class="size-card"><h3>Two Tier</h3><p>Serves about 100+ people</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>How To Order</h2>
+  <p>Choose your design, flavor, filling, and send us your details easily.</p>
+
+  <div class="steps">
+    <div class="step">
+      <h3>1. Pick your idea</h3>
+      <p>Send us a photo or get inspired by our previous work.</p>
+    </div>
+
+    <div class="step">
+      <h3>2. Choose flavors</h3>
+      <p>Select your cake flavor, filling, and size.</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Send details</h3>
+      <p>Tell us your date, colors, and custom message.</p>
+    </div>
+
+    <div class="step">
+      <h3>4. We confirm</h3>
+      <p>We will contact you to finalize your order.</p>
+    </div>
+  </div>
+</div>
+
+<div class="order-section">
+  <h2>Ready to Order Your Cake?</h2>
+  <p>Place your order today and tell us how you want your custom cake made.</p>
+  <a class="button" href="order-en.html">Order Now</a>
+</div>
+
+<div class="social-section">
+  <h2>Follow Us and Contact Us</h2>
+  <a class="social-btn" href="https://www.instagram.com/blancaspasteles/" target="_blank">Instagram</a>
+  <a class="social-btn" href="https://wa.me/19012893587" target="_blank">WhatsApp</a>
+</div>
+
+<div class="contact">
+  <h2>Contact</h2>
+  <p>(901)-289-3587</p>
+  <p>Memphis, TN</p>
+</div>
+
+<footer>
+  © 2026 Blanca's Cakes and Desserts
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Order</a>
+
+</body>
+</html>

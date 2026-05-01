@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flavors and Fillings - Blanca's</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff3f8;
+      color: #8a2c6b;
+      margin: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 35px;
+      background-color: #f8d7e6;
+      font-weight: bold;
+    }
+
+    .logo img {
+      width: 180px;
+      height: auto;
+      display: block;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #8a2c6b;
+      margin-left: 18px;
+      font-weight: 500;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #8a2c6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    header {
+      padding: 45px 20px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .menu-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+      padding: 30px;
+    }
+
+    .menu-card {
+      background: white;
+      width: 320px;
+      padding: 25px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .menu-card h2 {
+      margin-top: 0;
+      font-size: 28px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 18px;
+    }
+
+    li {
+      padding: 10px;
+      border-bottom: 1px solid #f8d7e6;
+    }
+
+    li:last-child {
+      border-bottom: none;
+    }
+
+    .order-section {
+      background: #f8d7e6;
+      margin: 20px auto 35px;
+      padding: 35px 20px;
+      max-width: 800px;
+      border-radius: 22px;
+      border: 3px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .order-section h2,
+    .social-section h2 {
+      font-size: 32px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      text-decoration: none;
+      background: #ff69b4;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .home-button {
+      background: #8a2c6b;
+    }
+
+    .social-section {
+      text-align: center;
+      padding: 35px;
+      background: white;
+    }
+
+    .social-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      background: #ff69b4;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 100;
+    }
+
+    footer {
+      background-color: #f8d7e6;
+      padding: 20px;
+      margin-top: 30px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+      .topbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      .nav a {
+        margin: 8px;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="logo">
+    <img src="logo.png" alt="Blanca's Logo">
+  </div>
+
+  <div class="nav">
+    <a href="index-en.html">Home</a>
+    <a href="work-en.html">Gallery</a>
+    <a href="flavors-en.html">Flavors</a>
+    <a href="order-en.html">Order</a>
+    <span class="lang-switch"><a href="flavors.html">Español</a> | <strong>English</strong></span>
+  </div>
+</div>
+
+<header>
+  <h1>Flavors and Fillings</h1>
+</header>
+
+<p class="intro">
+  Choose your cake flavor and pair it with the filling you love most.
+</p>
+
+<div class="menu-container">
+
+  <div class="menu-card">
+    <h2>Cake Flavors</h2>
+    <ul>
+      <li>Strawberry</li>
+      <li>Chocolate</li>
+      <li>Vanilla</li>
+      <li>Red Velvet</li>
+      <li>Marble: Chocolate / Vanilla</li>
+    </ul>
+  </div>
+
+  <div class="menu-card">
+    <h2>Fillings</h2>
+    <ul>
+      <li>Strawberries with cream</li>
+      <li>Strawberries with cream, coconut and pecans</li>
+      <li>Coconut and pecans</li>
+      <li>Nutella with strawberries</li>
+      <li>Mocha, coconut and pecans</li>
+      <li>Peaches with cream</li>
+      <li>Mango</li>
+      <li>Cajeta and pecans</li>
+      <li>Chocolate chips</li>
+      <li>Flan</li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="order-section">
+  <h2>Already know what flavor you want?</h2>
+  <p>Place your order and tell us your flavor, filling, size, and design idea.</p>
+
+  <a class="button" href="order-en.html">Order Now</a>
+  <a class="button home-button" href="index-en.html">Back Home</a>
+</div>
+
+<div class="social-section">
+  <h2>Follow Us and Contact Us</h2>
+  <a class="social-btn" href="https://www.instagram.com/blancaspasteles/" target="_blank">Instagram</a>
+  <a class="social-btn" href="https://wa.me/19012893587" target="_blank">WhatsApp</a>
+</div>
+
+<footer>
+  © 2026 Blanca's Cakes and Desserts
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Order</a>
+
+</body>
+</html>

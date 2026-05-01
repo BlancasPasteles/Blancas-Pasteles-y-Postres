@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Order - Blanca's</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff3f8;
+      color: #8a2c6b;
+      margin: 0;
+      text-align: center;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 35px;
+      background-color: #f8d7e6;
+      font-weight: bold;
+    }
+
+    .logo img {
+      width: 180px;
+      height: auto;
+      display: block;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #8a2c6b;
+      margin-left: 18px;
+      font-weight: 500;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #8a2c6b;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    header {
+      padding: 45px 20px 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 42px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 0 20px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .form-box {
+      background: white;
+      max-width: 650px;
+      margin: 30px auto;
+      padding: 35px;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      text-align: left;
+    }
+
+    .form-section-title {
+      text-align: center;
+      font-size: 26px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #f8a5c2;
+      border-radius: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    textarea {
+      height: 130px;
+      resize: none;
+    }
+
+    .form-group {
+      display: none;
+    }
+
+    .estimate-box {
+      background: #f8d7e6;
+      border: 2px solid #ff69b4;
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .estimate-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+
+    .estimate-price {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+
+    .rush-added, .rush-warning, .deposit-warning, .policy-check {
+      margin-top: 16px;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .rush-added {
+      background: #fff8e8;
+      border: 2px solid #f0b45b;
+      display: none;
+    }
+
+    .rush-warning {
+      background: #fff8e8;
+      border: 2px solid #f0b45b;
+    }
+
+    .deposit-warning {
+      background: #fff3f8;
+      border: 2px solid #ff69b4;
+    }
+
+    .policy-check {
+      background: white;
+      border: 2px solid #f8a5c2;
+    }
+
+    .policy-check label {
+      display: flex;
+      gap: 10px;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .policy-check input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      margin-top: 25px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 15px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <div class="logo"><img src="logo.png" alt="Logo"></div>
+  <div class="nav">
+    <a href="index-en.html">Home</a>
+    <a href="work-en.html">Gallery</a>
+    <a href="flavors-en.html">Flavors</a>
+    <a href="order-en.html">Order</a>
+    <span class="lang-switch"><a href="order.html">Español</a> | <strong>English</strong></span>
+  </div>
+</div>
+
+<header>
+  <h1>Order Now</h1>
+</header>
+
+<p class="intro">
+  Fill out this form with your cake details. We will contact you to confirm your order.
+</p>
+
+<div class="form-box">
+<form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="guardarResumenOrden()">
+
+<input type="hidden" name="_subject" value="New Cake Order">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://blancaspasteles.github.io/Blancas-Pasteles-y-Postres/thankyou-en.html">
+<input type="hidden" id="precioEstimadoInput" name="Estimated Price" value="">
+<input type="hidden" id="depositoInput" name="Required Deposit" value="">
+
+<h2 class="form-section-title">Order Details</h2>
+
+<label for="tipoOrden">Order Type</label>
+<select id="tipoOrden" name="Order Type" required onchange="actualizarFormulario()">
+<option value="">Select an option</option>
+<option value="Pastel Personalizado">Custom Cake</option>
+<option value="Flan">Flan</option>
+<option value="Cupcakes / Postres por Docena">Cupcakes / Desserts by the Dozen</option>
+<option value="Otro">Other</option>
+</select>
+
+<label for="nombre">Name</label>
+<input type="text" id="nombre" name="Name" required>
+
+<label for="telefono">Phone Number</label>
+<input type="tel" id="telefono" name="Phone" required><div class="form-group" id="saborGroup">
+<label for="sabor">Cake Flavor</label>
+<select id="sabor" name="Flavor">
+<option value="">Select a flavor</option>
+<option>Strawberry</option>
+<option>Chocolate</option>
+<option>Vanilla</option>
+<option>Red Velvet</option>
+<option>Marble: Chocolate / Vanilla</option>
+</select>
+</div>
+
+<div class="form-group" id="rellenoGroup">
+<label for="relleno">Filling</label>
+<select id="relleno" name="Filling">
+<option value="">Select a filling</option>
+<option>Strawberries with cream</option>
+<option>Strawberries with cream, coconut and pecans</option>
+<option>Coconut and pecans</option>
+<option>Nutella with strawberries</option>
+<option>Mocha, coconut and pecans</option>
+<option>Peaches with cream</option>
+<option>Mango</option>
+<option>Cajeta and pecans</option>
+<option>Chocolate chips</option>
+</select>
+</div>
+
+<div class="form-group" id="frostingGroup">
+<label for="frosting">Frosting</label>
+<select id="frosting" name="Frosting">
+<option value="">Select frosting</option>
+<option>Vanilla</option>
+<option>Chocolate</option>
+<option>Strawberry</option>
+<option>Whipped Cream</option>
+<option>Buttercream</option>
+<option>Not Sure</option>
+</select>
+</div>
+
+<div class="form-group" id="tamanoGroup">
+<label for="tamano">Cake Size</label>
+<select id="tamano" name="Cake Size" onchange="calcularPrecio()">
+<option value="">Select a size</option>
+<option value="Pequeño">Small</option>
+<option value="Mediano">Medium</option>
+<option value="Grande">Large</option>
+<option value="Dos pisos">Two Tier</option>
+<option value="No estoy seguro/a">Not Sure</option>
+</select>
+</div>
+
+<div class="form-group" id="flanCantidadGroup">
+<label for="cantidadFlan">Flan Quantity</label>
+<select id="cantidadFlan" name="Flan Quantity" onchange="calcularPrecio()">
+<option value="1">1 flan</option><option value="2">2 flans</option><option value="3">3 flans</option><option value="4">4 flans</option><option value="5">5 flans</option>
+</select>
+</div>
+
+<div class="form-group" id="docenaCantidadGroup">
+<label for="cantidadDocenas">Dozens Quantity</label>
+<select id="cantidadDocenas" name="Dozens Quantity" onchange="calcularPrecio()">
+<option value="1">1 dozen</option><option value="2">2 dozens</option><option value="3">3 dozens</option><option value="4">4 dozens</option><option value="5">5 dozens</option>
+</select>
+</div>
+
+<label for="fecha">Date Needed</label>
+<input type="date" id="fecha" name="Needed Date" required onchange="calcularPrecio()">
+
+<label for="mensaje">Special Details</label>
+<textarea id="mensaje" name="Special Details"></textarea>
+
+<label for="alergias">Allergies or Important Notes</label>
+<textarea id="alergias" name="Allergies"></textarea>
+
+<label for="foto">Optional Inspiration Photo</label>
+<input type="file" id="foto" name="Reference Photo" accept="image/*">
+
+<div class="estimate-box">
+<h3>Starting Estimate</h3>
+<div class="estimate-price" id="estimatePrice">Select order type</div>
+<p id="estimateText">Final price may change depending on design details.</p>
+<div class="rush-added" id="rushAdded">Rush fee added: +$25</div>
+</div>
+
+<div class="rush-warning"><strong>Rush orders:</strong> orders for tomorrow or the day after include +$25.</div>
+<div class="deposit-warning" id="depositWarning"><strong>Important:</strong> a non-refundable deposit is required to reserve your date.</div>
+
+<div class="policy-check">
+<label><input type="checkbox" required>I understand that a non-refundable deposit is required to reserve my event date.</label>
+</div>
+
+<button class="submit-btn" type="submit">Submit Order</button>
+
+</form>
+</div>
+
+<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Order</a>
+
+<script>
+const rushFee=25;
+function getTodayLocal(){const t=new Date();t.setHours(0,0,0,0);return t;}
+function formatDateLocal(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+function setupDateLimit(){const f=document.getElementById("fecha");const tom=getTodayLocal();tom.setDate(tom.getDate()+1);f.min=formatDateLocal(tom);}
+function getSelectedDate(){const v=document.getElementById("fecha").value;if(!v)return null;const s=new Date(v+"T00:00:00");s.setHours(0,0,0,0);return s;}
+function isRushDate(){const s=getSelectedDate();if(!s)return false;const t=getTodayLocal();t.setDate(t.getDate()+1);const d=getTodayLocal();d.setDate(d.getDate()+2);return s.getTime()===t.getTime()||s.getTime()===d.getTime();}
+function obtenerDeposito(){const tipo=document.getElementById("tipoOrden").value;if(tipo==="Flan"||tipo==="Cupcakes / Postres por Docena"){return 25;}return 50;}
+function actualizarDeposito(){const dep=obtenerDeposito();document.getElementById("depositWarning").innerHTML=`<strong>Important:</strong> a non-refundable <strong>$${dep}</strong> deposit is required to reserve your date.`;document.getElementById("depositoInput").value="$"+dep;}
+function actualizarFormulario(){const tipo=document.getElementById("tipoOrden").value;["saborGroup","rellenoGroup","frostingGroup","tamanoGroup","flanCantidadGroup","docenaCantidadGroup"].forEach(id=>document.getElementById(id).style.display="none");if(tipo==="Pastel Personalizado"){document.getElementById("saborGroup").style.display="block";document.getElementById("rellenoGroup").style.display="block";document.getElementById("tamanoGroup").style.display="block";}if(tipo==="Flan"){document.getElementById("flanCantidadGroup").style.display="block";}if(tipo==="Cupcakes / Postres por Docena"){document.getElementById("saborGroup").style.display="block";document.getElementById("frostingGroup").style.display="block";document.getElementById("docenaCantidadGroup").style.display="block";}actualizarDeposito();calcularPrecio();}
+function calcularPrecio(){const tipo=document.getElementById("tipoOrden").value;const tam=document.getElementById("tamano").value;const flan=parseInt(document.getElementById("cantidadFlan").value||1);const doc=parseInt(document.getElementById("cantidadDocenas").value||1);let base=null;let desc="";if(tipo==="Flan"){base=40*flan;desc=flan+" flan(s).";}else if(tipo==="Cupcakes / Postres por Docena"){base=40*doc;desc=doc+" dozen(s).";}else if(tipo==="Pastel Personalizado"){if(tam==="Pequeño"){base=50;desc="Small custom cake.";}else if(tam==="Mediano"){base=80;desc="Medium custom cake.";}else if(tam==="Grande"){base=100;desc="Large custom cake.";}else if(tam==="Dos pisos"){base=150;desc="Two tier cake or more.";}else{document.getElementById("estimatePrice").textContent="Select a size";return;}}else if(tipo==="Otro"){document.getElementById("estimatePrice").textContent="Price to be confirmed";return;}else{document.getElementById("estimatePrice").textContent="Select order type";return;}let total=base;if(isRushDate()){total+=rushFee;document.getElementById("rushAdded").style.display="block";}else{document.getElementById("rushAdded").style.display="none";}document.getElementById("estimatePrice").textContent="$"+total+"+";document.getElementById("estimateText").textContent=desc;document.getElementById("precioEstimadoInput").value="$"+total+"+";}
+function guardarResumenOrden(){const resumen={tipoOrden:document.getElementById("tipoOrden").value,nombre:document.getElementById("nombre").value,telefono:document.getElementById("telefono").value,sabor:document.getElementById("sabor").value,relleno:document.getElementById("relleno").value,frosting:document.getElementById("frosting").value,tamano:document.getElementById("tamano").value,cantidadFlan:document.getElementById("cantidadFlan").value,cantidadDocenas:document.getElementById("cantidadDocenas").value,fecha:document.getElementById("fecha").value,alergias:document.getElementById("alergias").value,precioEstimado:document.getElementById("precioEstimadoInput").value,deposito:document.getElementById("depositoInput").value};localStorage.setItem("resumenOrdenBlancas",JSON.stringify(resumen));}
+setupDateLimit();actualizarFormulario();
+</script>
+
+</body>
+</html>
