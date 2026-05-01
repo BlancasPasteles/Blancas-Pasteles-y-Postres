@@ -1,185 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gracias - Blanca's</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #fff3f8;
-      color: #8a2c6b;
-      margin: 0;
-      text-align: center;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 35px;
-      background-color: #f8d7e6;
-      font-weight: bold;
-    }
-
-    .logo {
-      font-size: 28px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .nav a {
-      text-decoration: none;
-      color: #8a2c6b;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-
-    .thankyou-box {
-      background: white;
-      max-width: 750px;
-      margin: 80px auto;
-      padding: 45px 30px;
-      border-radius: 25px;
-      border: 3px solid #f8a5c2;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 46px;
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 15px 10px;
-      text-decoration: none;
-      background: #ff69b4;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .home-button {
-      background: #8a2c6b;
-    }
-
-    .social-section {
-      text-align: center;
-      padding: 35px;
-      background: white;
-    }
-
-    .social-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-    }
-
-    .social-btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      background: #ff69b4;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 100;
-    }
-
-    footer {
-      background-color: #f8d7e6;
-      padding: 20px;
-      margin-top: 30px;
-      font-size: 13px;
-    }
-
-    @media (max-width: 700px) {
-      .topbar {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .nav a {
-        margin: 8px;
-        display: inline-block;
-      }
-
-      .thankyou-box {
-        margin: 40px 20px;
-      }
-
-      h1 {
-        font-size: 36px;
-      }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You | Blanca's Pasteles</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<div class="topbar">
-  <div class="logo">Blanca's Pasteles</div>
+  <header>
+    <img src="rellenos.jpeg" alt="Blanca's Pasteles Logo" class="logo" />
+    <h1>Blanca's Pasteles</h1>
+    <p>Gracias por tu orden</p>
+  </header>
 
-  <div class="nav">
-    <a href="index.html">Inicio</a>
-    <a href="work.html">Trabajo Anterior</a>
-    <a href="flavors.html">Sabores</a>
-    <a href="order.html">Ordenar</a>
+  <section class="thankyou-section">
+    <h2>Thank You For Your Order!</h2>
+    <p>
+      Your custom order request has been submitted successfully. We will review your order details and contact you shortly regarding final pricing and confirmation.
+    </p>
+    <p>
+      A <strong>$50 non-refundable deposit is required</strong> to reserve your event date after submitting your cake details. The remaining balance will be paid later.
+    </p>
+  </section>
+
+  <section class="payment-section">
+    <h2>Send Your $50 Deposit</h2>
+
+    <div class="payment-buttons">
+      <a href="https://cash.app/$blancaspasteles" target="_blank" class="payment-btn">
+        Pay $50 with Cash App
+      </a>
+
+      <div class="zelle-box">
+        <strong>Zelle:</strong> 901-289-3587
+      </div>
+    </div>
+
+    <p class="payment-note">
+      Please include your full name and event date in the payment note. Orders are not officially reserved until the deposit is received.
+    </p>
+  </section>
+
+  <div class="back-home">
+    <a href="index.html">Return to Home</a>
   </div>
-</div>
-
-<div class="thankyou-box">
-  <h1>¡Gracias por tu orden! 💕</h1>
-  <p>
-    Hemos recibido los detalles de tu pastel. Nos comunicaremos contigo pronto
-    para confirmar la fecha, diseño, sabor y todos los detalles.
-  </p>
-
-  <p>
-    Si quieres mandar más información o una foto adicional, también puedes escribirnos por WhatsApp.
-  </p>
-
-  <a class="button" href="https://wa.me/19012893587" target="_blank">Enviar WhatsApp</a>
-  <a class="button home-button" href="index.html">Volver al Inicio</a>
-</div>
-
-<div class="social-section">
-  <h2>Síguenos y Contáctanos</h2>
-  <a class="social-btn" href="https://www.instagram.com/blancaspasteles/" target="_blank">Instagram</a>
-  <a class="social-btn" href="https://wa.me/19012893587" target="_blank">WhatsApp</a>
-</div>
-
-<footer>
-  © 2026 Blanca's Pasteles y Postres
-</footer>
-
-<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
 
 </body>
 </html>
