@@ -19,16 +19,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 35px;
+      padding: 14px 35px;
       background-color: #f8d7e6;
       font-weight: bold;
     }
 
-    .logo {
-      font-size: 28px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .logo img {
+      width: 180px;
+      height: auto;
+      display: block;
     }
 
     .nav a {
@@ -172,6 +171,10 @@
         gap: 10px;
       }
 
+      .logo img {
+        width: 150px;
+      }
+
       .nav a {
         margin: 8px;
         display: inline-block;
@@ -195,7 +198,9 @@
 <body>
 
 <div class="topbar">
-  <div class="logo">Blanca's Pasteles</div>
+  <div class="logo">
+    <img src="logo.png" alt="Blanca's Pasteles Logo">
+  </div>
 
   <div class="nav">
     <a href="index.html">Inicio</a>

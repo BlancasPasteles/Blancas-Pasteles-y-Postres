@@ -19,16 +19,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 35px;
+      padding: 14px 35px;
       background-color: #f8d7e6;
       font-weight: bold;
     }
 
-    .logo {
-      font-size: 28px;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      letter-spacing: 1px;
+    .logo img {
+      width: 180px;
+      height: auto;
+      display: block;
     }
 
     .nav a {
@@ -95,12 +94,6 @@
     textarea {
       height: 130px;
       resize: none;
-    }
-
-    .note {
-      font-size: 13px;
-      margin-top: 6px;
-      color: #8a2c6b;
     }
 
     .form-group {
@@ -208,26 +201,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
 
-    .submit-btn:hover {
-      background-color: #e7549f;
-    }
-
-    .button {
-      display: inline-block;
-      margin: 15px 10px 30px;
-      text-decoration: none;
-      background: #ff69b4;
-      color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .home-button {
-      background: #8a2c6b;
-    }
-
     .social-section {
       text-align: center;
       padding: 35px;
@@ -272,13 +245,21 @@
       text-align: center;
       font-size: 13px;
     }
+
+    @media (max-width:700px){
+      .topbar{flex-direction:column;gap:10px;}
+      .logo img{width:150px;}
+      .nav a{margin:8px;display:inline-block;}
+    }
   </style>
 </head>
 
 <body>
 
 <div class="topbar">
-  <div class="logo">Blanca's Pasteles</div>
+  <div class="logo">
+    <img src="logo.png" alt="Blanca's Pasteles Logo">
+  </div>
   <div class="nav">
     <a href="index.html">Inicio</a>
     <a href="work.html">Trabajo Anterior</a>
@@ -416,19 +397,12 @@
 <div class="rush-added" id="rushAdded">Cargo de último momento agregado: +$25</div>
 </div>
 
-<div class="rush-warning">
-<strong>Órdenes de último momento:</strong> mañana o pasado mañana agregan +$25.
-</div>
+<div class="rush-warning"><strong>Órdenes de último momento:</strong> mañana o pasado mañana agregan +$25.</div>
 
-<div class="deposit-warning" id="depositWarning">
-<strong>Importante:</strong> Se requiere un depósito no reembolsable para reservar la fecha.
-</div>
+<div class="deposit-warning" id="depositWarning"><strong>Importante:</strong> Se requiere un depósito no reembolsable para reservar la fecha.</div>
 
 <div class="policy-check">
-<label>
-<input type="checkbox" required>
-Entiendo que se requiere un depósito no reembolsable para reservar la fecha.
-</label>
+<label><input type="checkbox" required>Entiendo que se requiere un depósito no reembolsable para reservar la fecha.</label>
 </div>
 
 <button class="submit-btn" type="submit">Enviar Orden</button>
@@ -438,103 +412,17 @@ Entiendo que se requiere un depósito no reembolsable para reservar la fecha.
 
 <script>
 const rushFee = 25;
-
 function getTodayLocal(){const t=new Date();t.setHours(0,0,0,0);return t;}
 function formatDateLocal(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
 function setupDateLimit(){const f=document.getElementById("fecha");const tom=getTodayLocal();tom.setDate(tom.getDate()+1);f.min=formatDateLocal(tom);}
 function getSelectedDate(){const v=document.getElementById("fecha").value;if(!v)return null;const s=new Date(v+"T00:00:00");s.setHours(0,0,0,0);return s;}
 function isRushDate(){const s=getSelectedDate();if(!s)return false;const t=getTodayLocal();t.setDate(t.getDate()+1);const d=getTodayLocal();d.setDate(d.getDate()+2);return s.getTime()===t.getTime()||s.getTime()===d.getTime();}
-
-function obtenerDeposito(){
-const tipo=document.getElementById("tipoOrden").value;
-if(tipo==="Flan"||tipo==="Cupcakes / Postres por Docena"){return 25;}
-return 50;
-}
-
-function actualizarDeposito(){
-const dep=obtenerDeposito();
-document.getElementById("depositWarning").innerHTML=`<strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$${dep}</strong> para reservar la fecha.`;
-document.getElementById("depositoInput").value="$"+dep;
-}
-
-function actualizarFormulario(){
-const tipo=document.getElementById("tipoOrden").value;
-
-["saborGroup","rellenoGroup","frostingGroup","tamanoGroup","flanCantidadGroup","docenaCantidadGroup"].forEach(id=>document.getElementById(id).style.display="none");
-
-if(tipo==="Pastel Personalizado"){
-document.getElementById("saborGroup").style.display="block";
-document.getElementById("rellenoGroup").style.display="block";
-document.getElementById("tamanoGroup").style.display="block";
-}
-if(tipo==="Flan"){
-document.getElementById("flanCantidadGroup").style.display="block";
-}
-if(tipo==="Cupcakes / Postres por Docena"){
-document.getElementById("saborGroup").style.display="block";
-document.getElementById("frostingGroup").style.display="block";
-document.getElementById("docenaCantidadGroup").style.display="block";
-}
-
-actualizarDeposito();
-calcularPrecio();
-}
-
-function calcularPrecio(){
-const tipo=document.getElementById("tipoOrden").value;
-const tam=document.getElementById("tamano").value;
-const flan=parseInt(document.getElementById("cantidadFlan").value||1);
-const doc=parseInt(document.getElementById("cantidadDocenas").value||1);
-
-let base=null;
-let desc="";
-
-if(tipo==="Flan"){base=40*flan;desc=flan+" flan(es).";}
-else if(tipo==="Cupcakes / Postres por Docena"){base=40*doc;desc=doc+" docena(s).";}
-else if(tipo==="Pastel Personalizado"){
-if(tam==="Pequeño"){base=50;desc="Pastel pequeño.";}
-else if(tam==="Mediano"){base=80;desc="Pastel mediano.";}
-else if(tam==="Grande"){base=100;desc="Pastel grande.";}
-else if(tam==="Dos pisos"){base=150;desc="Pastel de dos pisos o más.";}
-else {document.getElementById("estimatePrice").textContent="Selecciona un tamaño";return;}
-}
-else if(tipo==="Otro"){
-document.getElementById("estimatePrice").textContent="Precio por confirmar";return;
-}
-else{
-document.getElementById("estimatePrice").textContent="Selecciona tipo de orden";return;
-}
-
-let total=base;
-if(isRushDate()){total+=rushFee;document.getElementById("rushAdded").style.display="block";}
-else{document.getElementById("rushAdded").style.display="none";}
-
-document.getElementById("estimatePrice").textContent="$"+total+"+";
-document.getElementById("estimateText").textContent=desc;
-document.getElementById("precioEstimadoInput").value="$"+total+"+";
-}
-
-function guardarResumenOrden(){
-const resumen={
-tipoOrden:document.getElementById("tipoOrden").value,
-nombre:document.getElementById("nombre").value,
-telefono:document.getElementById("telefono").value,
-sabor:document.getElementById("sabor").value,
-relleno:document.getElementById("relleno").value,
-frosting:document.getElementById("frosting").value,
-tamano:document.getElementById("tamano").value,
-cantidadFlan:document.getElementById("cantidadFlan").value,
-cantidadDocenas:document.getElementById("cantidadDocenas").value,
-fecha:document.getElementById("fecha").value,
-alergias:document.getElementById("alergias").value,
-precioEstimado:document.getElementById("precioEstimadoInput").value,
-deposito:document.getElementById("depositoInput").value
-};
-localStorage.setItem("resumenOrdenBlancas",JSON.stringify(resumen));
-}
-
-setupDateLimit();
-actualizarFormulario();
+function obtenerDeposito(){const tipo=document.getElementById("tipoOrden").value;if(tipo==="Flan"||tipo==="Cupcakes / Postres por Docena"){return 25;}return 50;}
+function actualizarDeposito(){const dep=obtenerDeposito();document.getElementById("depositWarning").innerHTML=`<strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$${dep}</strong> para reservar la fecha.`;document.getElementById("depositoInput").value="$"+dep;}
+function actualizarFormulario(){const tipo=document.getElementById("tipoOrden").value;["saborGroup","rellenoGroup","frostingGroup","tamanoGroup","flanCantidadGroup","docenaCantidadGroup"].forEach(id=>document.getElementById(id).style.display="none");if(tipo==="Pastel Personalizado"){document.getElementById("saborGroup").style.display="block";document.getElementById("rellenoGroup").style.display="block";document.getElementById("tamanoGroup").style.display="block";}if(tipo==="Flan"){document.getElementById("flanCantidadGroup").style.display="block";}if(tipo==="Cupcakes / Postres por Docena"){document.getElementById("saborGroup").style.display="block";document.getElementById("frostingGroup").style.display="block";document.getElementById("docenaCantidadGroup").style.display="block";}actualizarDeposito();calcularPrecio();}
+function calcularPrecio(){const tipo=document.getElementById("tipoOrden").value;const tam=document.getElementById("tamano").value;const flan=parseInt(document.getElementById("cantidadFlan").value||1);const doc=parseInt(document.getElementById("cantidadDocenas").value||1);let base=null;let desc="";if(tipo==="Flan"){base=40*flan;desc=flan+" flan(es).";}else if(tipo==="Cupcakes / Postres por Docena"){base=40*doc;desc=doc+" docena(s).";}else if(tipo==="Pastel Personalizado"){if(tam==="Pequeño"){base=50;desc="Pastel pequeño.";}else if(tam==="Mediano"){base=80;desc="Pastel mediano.";}else if(tam==="Grande"){base=100;desc="Pastel grande.";}else if(tam==="Dos pisos"){base=150;desc="Pastel de dos pisos o más.";}else{document.getElementById("estimatePrice").textContent="Selecciona un tamaño";return;}}else if(tipo==="Otro"){document.getElementById("estimatePrice").textContent="Precio por confirmar";return;}else{document.getElementById("estimatePrice").textContent="Selecciona tipo de orden";return;}let total=base;if(isRushDate()){total+=rushFee;document.getElementById("rushAdded").style.display="block";}else{document.getElementById("rushAdded").style.display="none";}document.getElementById("estimatePrice").textContent="$"+total+"+";document.getElementById("estimateText").textContent=desc;document.getElementById("precioEstimadoInput").value="$"+total+"+";}
+function guardarResumenOrden(){const resumen={tipoOrden:document.getElementById("tipoOrden").value,nombre:document.getElementById("nombre").value,telefono:document.getElementById("telefono").value,sabor:document.getElementById("sabor").value,relleno:document.getElementById("relleno").value,frosting:document.getElementById("frosting").value,tamano:document.getElementById("tamano").value,cantidadFlan:document.getElementById("cantidadFlan").value,cantidadDocenas:document.getElementById("cantidadDocenas").value,fecha:document.getElementById("fecha").value,alergias:document.getElementById("alergias").value,precioEstimado:document.getElementById("precioEstimadoInput").value,deposito:document.getElementById("depositoInput").value};localStorage.setItem("resumenOrdenBlancas",JSON.stringify(resumen));}
+setupDateLimit();actualizarFormulario();
 </script>
 
 </body>
