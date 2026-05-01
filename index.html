@@ -32,8 +32,19 @@
     .nav a {
       text-decoration: none;
       color: #8a2c6b;
-      margin-left: 20px;
+      margin-left: 18px;
       font-weight: 500;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #8a2c6b;
+      text-decoration: none;
+      font-weight: 600;
     }
 
     .hero {
@@ -100,14 +111,14 @@
       line-height: 1.5;
     }
 
-    .cards, .photo-grid, .steps, .reviews-grid, .price-grid, .size-grid {
+    .photo-grid, .steps, .price-grid, .size-grid {
       display: flex;
       justify-content: center;
       gap: 25px;
       flex-wrap: wrap;
     }
 
-    .card, .step, .review-card, .price-card, .size-card {
+    .step, .price-card, .size-card {
       background-color: white;
       width: 240px;
       padding: 20px;
@@ -116,7 +127,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
-    .card h3, .step h3, .review-card h3, .price-card h3, .size-card h3 {
+    .step h3, .price-card h3, .size-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
     }
@@ -142,41 +153,6 @@
       margin: 0;
       font-family: 'Playfair Display', serif;
       font-size: 22px;
-    }
-
-    .reviews-section {
-      background: white;
-      text-align: center;
-      padding: 50px 25px;
-    }
-
-    .reviews-section h2 {
-      font-size: 34px;
-      margin-bottom: 15px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .reviews-section p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      line-height: 1.5;
-    }
-
-    .review-card {
-      min-height: 150px;
-    }
-
-    .review-card p {
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 15px;
-      color: #8a2c6b;
-    }
-
-    .review-placeholder {
-      font-style: italic;
-      opacity: 0.75;
     }
 
     .price-card p, .size-card p {
@@ -270,6 +246,11 @@
         display: inline-block;
       }
 
+      .lang-switch {
+        display: block;
+        margin: 8px 0;
+      }
+
       .hero-text h1 {
         font-size: 36px;
       }
@@ -293,6 +274,7 @@
     <a href="work.html">Trabajo Anterior</a>
     <a href="flavors.html">Sabores</a>
     <a href="order.html">Ordenar</a>
+    <span class="lang-switch"><strong>Español</strong> | <a href="index-en.html">English</a></span>
   </div>
 </div>
 
@@ -381,28 +363,6 @@
     <div class="step">
       <h3>4. Confirmamos</h3>
       <p>Nos comunicamos contigo para finalizar.</p>
-    </div>
-  </div>
-</div>
-
-<div class="reviews-section">
-  <h2>Reseñas de Clientes</h2>
-  <p>Muy pronto agregaremos comentarios reales de nuestros clientes.</p>
-
-  <div class="reviews-grid">
-    <div class="review-card">
-      <h3>Próxima reseña</h3>
-      <p class="review-placeholder">Aquí puedes agregar una reseña real cuando un cliente te dé permiso.</p>
-    </div>
-
-    <div class="review-card">
-      <h3>Próxima reseña</h3>
-      <p class="review-placeholder">Aquí puedes agregar otra reseña real sobre sabor, diseño o servicio.</p>
-    </div>
-
-    <div class="review-card">
-      <h3>Próxima reseña</h3>
-      <p class="review-placeholder">Aquí puedes agregar una reseña real de cumpleaños, boda o evento especial.</p>
     </div>
   </div>
 </div>
