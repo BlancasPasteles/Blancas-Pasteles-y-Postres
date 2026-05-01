@@ -128,6 +128,18 @@
       margin: 8px 0;
     }
 
+    .rush-added {
+      background: #fff8e8;
+      border: 2px solid #f0b45b;
+      color: #8a5a00;
+      padding: 13px;
+      border-radius: 14px;
+      margin-top: 14px;
+      text-align: center;
+      font-size: 14px;
+      display: none;
+    }
+
     .rush-warning {
       background: #fff8e8;
       border: 2px solid #f0b45b;
@@ -284,6 +296,7 @@
     <input type="hidden" name="_captcha" value="false">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_next" value="https://blancaspasteles.github.io/Blancas-Pasteles-y-Postres/thankyou.html">
+    <input type="hidden" id="precioEstimadoInput" name="Precio Estimado" value="">
 
     <h2 class="form-section-title">Detalles de tu Orden</h2>
 
@@ -329,7 +342,7 @@
     </select>
 
     <label for="fecha">Fecha que lo necesitas</label>
-    <input type="date" id="fecha" name="Fecha" required>
+    <input type="date" id="fecha" name="Fecha" required onchange="calcularPrecio()">
 
     <label for="mensaje">Detalles especiales</label>
     <textarea id="mensaje" name="Detalles Especiales" placeholder="Tema del pastel, colores, tamaño, mensaje en el pastel, cantidad de personas, etc."></textarea>
@@ -344,10 +357,14 @@
       <p id="estimateText">
         El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.
       </p>
+
+      <div class="rush-added" id="rushAdded">
+        Cargo de último momento agregado: +$25
+      </div>
     </div>
 
     <div class="rush-warning">
-      <strong>Ordenes de último momento:</strong> Las órdenes con poco tiempo de anticipación pueden tener un cargo extra dependiendo del diseño, tamaño y disponibilidad.
+      <strong>Órdenes de último momento:</strong> Si tu fecha es para mañana o pasado mañana, se agregará un cargo de último momento de <strong>$25</strong>.
     </div>
 
     <div class="deposit-warning">
@@ -375,31 +392,110 @@
 <a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
 
 <script>
+  const rushFee = 25;
+
+  function getTodayLocal() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today;
+  }
+
+  function formatDateLocal(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function setupDateLimit() {
+    const fechaInput = document.getElementById("fecha");
+    const tomorrow = getTodayLocal();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    fechaInput.min = formatDateLocal(tomorrow);
+  }
+
+  function getSelectedDate() {
+    const fechaValue = document.getElementById("fecha").value;
+
+    if (!fechaValue) {
+      return null;
+    }
+
+    const selected = new Date(fechaValue + "T00:00:00");
+    selected.setHours(0, 0, 0, 0);
+    return selected;
+  }
+
+  function isRushDate() {
+    const selected = getSelectedDate();
+
+    if (!selected) {
+      return false;
+    }
+
+    const tomorrow = getTodayLocal();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+
+    const dayAfterTomorrow = getTodayLocal();
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+
+    return selected.getTime() === tomorrow.getTime() || selected.getTime() === dayAfterTomorrow.getTime();
+  }
+
   function calcularPrecio() {
     const tamano = document.getElementById("tamano").value;
     const estimatePrice = document.getElementById("estimatePrice");
     const estimateText = document.getElementById("estimateText");
+    const rushAdded = document.getElementById("rushAdded");
+    const precioEstimadoInput = document.getElementById("precioEstimadoInput");
+
+    let basePrice = null;
+    let description = "";
 
     if (tamano === "Pequeño") {
-      estimatePrice.textContent = "$50+";
-      estimateText.textContent = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
+      basePrice = 50;
+      description = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
     } else if (tamano === "Mediano") {
-      estimatePrice.textContent = "$80+";
-      estimateText.textContent = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
+      basePrice = 80;
+      description = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
     } else if (tamano === "Grande") {
-      estimatePrice.textContent = "$100+";
-      estimateText.textContent = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
+      basePrice = 100;
+      description = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
     } else if (tamano === "Dos pisos") {
-      estimatePrice.textContent = "$150+";
-      estimateText.textContent = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
+      basePrice = 150;
+      description = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
     } else if (tamano === "No estoy seguro/a") {
       estimatePrice.textContent = "Precio por confirmar";
       estimateText.textContent = "Nos comunicaremos contigo para recomendarte el mejor tamaño según tu evento.";
+      rushAdded.style.display = isRushDate() ? "block" : "none";
+      precioEstimadoInput.value = isRushDate() ? "Precio por confirmar + cargo de último momento de $25" : "Precio por confirmar";
+      return;
     } else {
       estimatePrice.textContent = "Selecciona un tamaño";
       estimateText.textContent = "El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.";
+      rushAdded.style.display = "none";
+      precioEstimadoInput.value = "";
+      return;
+    }
+
+    let total = basePrice;
+
+    if (isRushDate()) {
+      total += rushFee;
+      rushAdded.style.display = "block";
+      estimatePrice.textContent = "$" + total + "+";
+      estimateText.textContent = description + " Incluye cargo de último momento.";
+      precioEstimadoInput.value = "$" + total + "+ incluyendo cargo de último momento";
+    } else {
+      rushAdded.style.display = "none";
+      estimatePrice.textContent = "$" + basePrice + "+";
+      estimateText.textContent = description;
+      precioEstimadoInput.value = "$" + basePrice + "+";
     }
   }
+
+  setupDateLimit();
+  calcularPrecio();
 </script>
 
 </body>
