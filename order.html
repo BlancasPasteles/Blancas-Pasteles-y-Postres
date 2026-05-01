@@ -318,7 +318,7 @@
 </p>
 
 <div class="form-box">
-  <form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data">
+  <form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="guardarResumenOrden()">
 
     <input type="hidden" name="_subject" value="Nueva Orden de Pastel">
     <input type="hidden" name="_captcha" value="false">
@@ -356,9 +356,9 @@
     </div>
 
     <div class="form-group" id="rellenoGroup">
-      <label for="relleno" id="rellenoLabel">Relleno</label>
-      <select id="relleno" name="Relleno / Frosting">
-        <option value="">Selecciona una opción</option>
+      <label for="relleno">Relleno</label>
+      <select id="relleno" name="Relleno">
+        <option value="">Selecciona un relleno</option>
         <option>Fresas con crema</option>
         <option>Fresas con crema, coco y nuez</option>
         <option>Coco y nuez</option>
@@ -394,6 +394,30 @@
         <option value="Grande">Grande</option>
         <option value="Dos pisos">Dos pisos</option>
         <option value="No estoy seguro/a">No estoy seguro/a</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="flanCantidadGroup">
+      <label for="cantidadFlan">Cantidad de Flanes</label>
+      <select id="cantidadFlan" name="Cantidad de Flanes" onchange="calcularPrecio()">
+        <option value="1">1 flan</option>
+        <option value="2">2 flanes</option>
+        <option value="3">3 flanes</option>
+        <option value="4">4 flanes</option>
+        <option value="5">5 flanes</option>
+        <option value="6">6 flanes</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="docenaCantidadGroup">
+      <label for="cantidadDocenas">Cantidad de Docenas</label>
+      <select id="cantidadDocenas" name="Cantidad de Docenas" onchange="calcularPrecio()">
+        <option value="1">1 docena</option>
+        <option value="2">2 docenas</option>
+        <option value="3">3 docenas</option>
+        <option value="4">4 docenas</option>
+        <option value="5">5 docenas</option>
+        <option value="6">6 docenas</option>
       </select>
     </div>
 
@@ -482,10 +506,7 @@
 
   function getSelectedDate() {
     const fechaValue = document.getElementById("fecha").value;
-
-    if (!fechaValue) {
-      return null;
-    }
+    if (!fechaValue) return null;
 
     const selected = new Date(fechaValue + "T00:00:00");
     selected.setHours(0, 0, 0, 0);
@@ -494,10 +515,7 @@
 
   function isRushDate() {
     const selected = getSelectedDate();
-
-    if (!selected) {
-      return false;
-    }
+    if (!selected) return false;
 
     const tomorrow = getTodayLocal();
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -515,6 +533,8 @@
     const rellenoGroup = document.getElementById("rellenoGroup");
     const frostingGroup = document.getElementById("frostingGroup");
     const tamanoGroup = document.getElementById("tamanoGroup");
+    const flanCantidadGroup = document.getElementById("flanCantidadGroup");
+    const docenaCantidadGroup = document.getElementById("docenaCantidadGroup");
 
     const sabor = document.getElementById("sabor");
     const relleno = document.getElementById("relleno");
@@ -525,6 +545,8 @@
     rellenoGroup.style.display = "none";
     frostingGroup.style.display = "none";
     tamanoGroup.style.display = "none";
+    flanCantidadGroup.style.display = "none";
+    docenaCantidadGroup.style.display = "none";
 
     sabor.required = false;
     relleno.required = false;
@@ -541,15 +563,27 @@
       tamano.required = true;
     }
 
+    if (tipoOrden === "Flan") {
+      flanCantidadGroup.style.display = "block";
+      sabor.value = "";
+      relleno.value = "";
+      frosting.value = "";
+      tamano.value = "";
+    }
+
     if (tipoOrden === "Cupcakes / Postres por Docena") {
       saborGroup.style.display = "block";
       frostingGroup.style.display = "block";
+      docenaCantidadGroup.style.display = "block";
 
       sabor.required = true;
       frosting.required = true;
+
+      relleno.value = "";
+      tamano.value = "";
     }
 
-    if (tipoOrden === "Flan" || tipoOrden === "Otro" || tipoOrden === "") {
+    if (tipoOrden === "Otro" || tipoOrden === "") {
       sabor.value = "";
       relleno.value = "";
       frosting.value = "";
@@ -562,6 +596,9 @@
   function calcularPrecio() {
     const tipoOrden = document.getElementById("tipoOrden").value;
     const tamano = document.getElementById("tamano").value;
+    const cantidadFlan = parseInt(document.getElementById("cantidadFlan").value);
+    const cantidadDocenas = parseInt(document.getElementById("cantidadDocenas").value);
+
     const estimatePrice = document.getElementById("estimatePrice");
     const estimateText = document.getElementById("estimateText");
     const rushAdded = document.getElementById("rushAdded");
@@ -571,11 +608,11 @@
     let description = "";
 
     if (tipoOrden === "Flan") {
-      basePrice = 35;
-      description = "Flan. Precio inicial desde $35.";
+      basePrice = 35 * cantidadFlan;
+      description = cantidadFlan + " flan(es). Precio inicial desde $35 cada uno.";
     } else if (tipoOrden === "Cupcakes / Postres por Docena") {
-      basePrice = 40;
-      description = "Cupcakes o postres por docena. Precio inicial desde $40.";
+      basePrice = 40 * cantidadDocenas;
+      description = cantidadDocenas + " docena(s). Precio inicial desde $40 por docena.";
     } else if (tipoOrden === "Otro") {
       estimatePrice.textContent = "Precio por confirmar";
       estimateText.textContent = "Nos comunicaremos contigo para confirmar precio según lo que necesites.";
@@ -630,6 +667,25 @@
       estimateText.textContent = description;
       precioEstimadoInput.value = "$" + basePrice + "+";
     }
+  }
+
+  function guardarResumenOrden() {
+    const resumen = {
+      tipoOrden: document.getElementById("tipoOrden").value,
+      nombre: document.getElementById("nombre").value,
+      telefono: document.getElementById("telefono").value,
+      sabor: document.getElementById("sabor").value,
+      relleno: document.getElementById("relleno").value,
+      frosting: document.getElementById("frosting").value,
+      tamano: document.getElementById("tamano").value,
+      cantidadFlan: document.getElementById("cantidadFlan").value,
+      cantidadDocenas: document.getElementById("cantidadDocenas").value,
+      fecha: document.getElementById("fecha").value,
+      alergias: document.getElementById("alergias").value,
+      precioEstimado: document.getElementById("precioEstimadoInput").value
+    };
+
+    localStorage.setItem("resumenOrdenBlancas", JSON.stringify(resumen));
   }
 
   setupDateLimit();

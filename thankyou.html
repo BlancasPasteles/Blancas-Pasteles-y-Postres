@@ -5,6 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You | Blanca's Pasteles</title>
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    .summary-section {
+      max-width: 750px;
+      margin: 30px auto;
+      padding: 30px 20px;
+      background: white;
+      border-radius: 20px;
+      border: 2px solid #f8a5c2;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      text-align: left;
+      color: #8a2c6b;
+    }
+
+    .summary-section h2 {
+      text-align: center;
+      color: #9b4f63;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+
+    .summary-row {
+      border-bottom: 1px solid #f8d7e6;
+      padding: 10px 0;
+      font-size: 16px;
+    }
+
+    .summary-row strong {
+      display: inline-block;
+      min-width: 160px;
+    }
+  </style>
 </head>
 <body>
 
@@ -20,8 +52,13 @@
       Your custom order request has been submitted successfully. We will review your order details and contact you shortly regarding final pricing and confirmation.
     </p>
     <p>
-      A <strong>$50 non-refundable deposit is required</strong> to reserve your event date after submitting your cake details. The remaining balance will be paid later.
+      A <strong>$50 non-refundable deposit is required</strong> to reserve your event date after submitting your order details. The remaining balance will be paid later.
     </p>
+  </section>
+
+  <section class="summary-section" id="summarySection">
+    <h2>Order Summary</h2>
+    <div id="orderSummary"></div>
   </section>
 
   <section class="payment-section">
@@ -45,6 +82,47 @@
   <div class="back-home">
     <a href="index.html">Return to Home</a>
   </div>
+
+  <script>
+    const savedSummary = localStorage.getItem("resumenOrdenBlancas");
+    const orderSummary = document.getElementById("orderSummary");
+    const summarySection = document.getElementById("summarySection");
+
+    if (savedSummary) {
+      const data = JSON.parse(savedSummary);
+
+      function addRow(label, value) {
+        if (value && value.trim() !== "") {
+          const row = document.createElement("div");
+          row.className = "summary-row";
+          row.innerHTML = "<strong>" + label + ":</strong> " + value;
+          orderSummary.appendChild(row);
+        }
+      }
+
+      addRow("Name", data.nombre);
+      addRow("Phone", data.telefono);
+      addRow("Order Type", data.tipoOrden);
+      addRow("Flavor", data.sabor);
+      addRow("Filling", data.relleno);
+      addRow("Frosting", data.frosting);
+      addRow("Cake Size", data.tamano);
+
+      if (data.tipoOrden === "Flan") {
+        addRow("Flan Quantity", data.cantidadFlan);
+      }
+
+      if (data.tipoOrden === "Cupcakes / Postres por Docena") {
+        addRow("Dozens", data.cantidadDocenas);
+      }
+
+      addRow("Needed Date", data.fecha);
+      addRow("Allergies / Notes", data.alergias);
+      addRow("Estimated Starting Price", data.precioEstimado);
+    } else {
+      summarySection.style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
