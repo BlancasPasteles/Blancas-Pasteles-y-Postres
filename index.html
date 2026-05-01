@@ -62,11 +62,44 @@
       line-height: 1.5;
     }
 
-    .hero img {
+    .slider {
       width: 330px;
+      height: 380px;
       border-radius: 25px;
       border: 5px solid #f8a5c2;
       box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      overflow: hidden;
+      position: relative;
+      background: white;
+    }
+
+    .slides {
+      display: flex;
+      width: 400%;
+      height: 100%;
+      animation: slide 16s infinite;
+    }
+
+    .slides img {
+      width: 25%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(0); }
+
+      25% { transform: translateX(-25%); }
+      45% { transform: translateX(-25%); }
+
+      50% { transform: translateX(-50%); }
+      70% { transform: translateX(-50%); }
+
+      75% { transform: translateX(-75%); }
+      95% { transform: translateX(-75%); }
+
+      100% { transform: translateX(0); }
     }
 
     .button {
@@ -270,8 +303,9 @@
         font-size: 36px;
       }
 
-      .hero img {
+      .slider {
         width: 260px;
+        height: 320px;
       }
     }
   </style>
@@ -301,7 +335,14 @@
     <a class="button" href="order.html">Ordenar Ahora</a>
   </div>
 
-  <img src="Rellenos.jpeg" alt="Pasteles">
+  <div class="slider">
+    <div class="slides">
+      <img src="Rellenos.jpeg" alt="Pastel personalizado">
+      <img src="cake2.jpg" alt="Wedding Cake">
+      <img src="cake5.jpg" alt="Barbie Cake">
+      <img src="cake6.jpg" alt="Toy Story Cake">
+    </div>
+  </div>
 </div>
 
 <div class="section">
