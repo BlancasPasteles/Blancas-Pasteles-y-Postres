@@ -100,14 +100,14 @@
       line-height: 1.5;
     }
 
-    .photo-grid, .steps, .reviews-grid, .price-grid, .size-grid {
+    .cards, .photo-grid, .steps, .reviews-grid, .price-grid, .size-grid {
       display: flex;
       justify-content: center;
       gap: 25px;
       flex-wrap: wrap;
     }
 
-    .step, .review-card, .price-card, .size-card {
+    .card, .step, .review-card, .price-card, .size-card {
       background-color: white;
       width: 240px;
       padding: 20px;
@@ -116,7 +116,7 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
-    .step h3, .review-card h3, .price-card h3, .size-card h3 {
+    .card h3, .step h3, .review-card h3, .price-card h3, .size-card h3 {
       font-family: 'Playfair Display', serif;
       font-size: 22px;
     }
@@ -224,76 +224,15 @@
     }
 
     .contact {
-      padding: 55px 25px;
-      background-color: #f8d7e6;
       text-align: center;
-    }
-
-    .contact-box {
-      background: white;
-      max-width: 850px;
-      margin: auto;
-      padding: 35px 25px;
-      border-radius: 25px;
-      border: 3px solid #f8a5c2;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .contact-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 34px;
-      margin-top: 0;
-      margin-bottom: 10px;
-    }
-
-    .contact-box p {
-      font-size: 17px;
-      line-height: 1.6;
-      margin: 8px 0;
-    }
-
-    .contact-grid {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      margin-top: 25px;
-      margin-bottom: 25px;
-    }
-
-    .contact-card {
-      background: #fff3f8;
-      border: 2px solid #f8a5c2;
-      border-radius: 18px;
-      padding: 18px;
-      width: 230px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    }
-
-    .contact-card h3 {
-      margin: 0 0 8px;
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-    }
-
-    .contact-buttons {
+      padding: 35px;
+      background-color: #f8d7e6;
       margin-top: 20px;
     }
 
-    .contact-button {
-      display: inline-block;
-      margin: 8px;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      background: #ff69b4;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
-    .instagram-button {
-      background: #8a2c6b;
+    .contact h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
     }
 
     .whatsapp-float {
@@ -337,10 +276,6 @@
 
       .hero img {
         width: 260px;
-      }
-
-      .contact-card {
-        width: 85%;
       }
     }
   </style>
@@ -485,32 +420,9 @@
 </div>
 
 <div class="contact">
-  <div class="contact-box">
-    <h2>Contacta con Nosotros</h2>
-    <p>¿Tienes preguntas antes de ordenar? Estamos felices de ayudarte con ideas, tamaños y disponibilidad.</p>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <h3>📞 Teléfono</h3>
-        <p>(901) 289-3587</p>
-      </div>
-
-      <div class="contact-card">
-        <h3>📍 Ubicación</h3>
-        <p>Memphis, Tennessee</p>
-      </div>
-
-      <div class="contact-card">
-        <h3>💬 Respuesta</h3>
-        <p>Respondemos lo antes posible por WhatsApp o Instagram.</p>
-      </div>
-    </div>
-
-    <div class="contact-buttons">
-      <a class="contact-button" href="https://wa.me/19012893587" target="_blank">Ordenar por WhatsApp</a>
-      <a class="contact-button instagram-button" href="https://www.instagram.com/blancaspasteles/" target="_blank">Ver Instagram</a>
-    </div>
-  </div>
+  <h2>Contacto</h2>
+  <p>(901)-289-3587</p>
+  <p>Memphis, TN</p>
 </div>
 
 <footer>
