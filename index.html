@@ -137,11 +137,41 @@
       text-align: center;
     }
 
+    .social-section {
+      text-align: center;
+      padding: 35px;
+      background: white;
+    }
+
+    .social-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 25px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      background: #ff69b4;
+    }
+
     .contact {
       text-align: center;
       padding: 35px;
       background-color: #f8d7e6;
-      margin-top: 40px;
+      margin-top: 20px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     footer {
@@ -176,7 +206,7 @@
 <body>
 
 <div class="topbar">
-  <div class="logo">Blanca's Pasteles y Postres</div>
+  <div class="logo">Blanca's Pasteles</div>
 
   <div class="nav">
     <a href="index.html">Inicio</a>
@@ -206,17 +236,17 @@
 
   <div class="photo-grid">
     <div class="photo-card">
-      <img src="cake2.jpg" alt="Wedding Cake">
+      <img src="cake2.jpg">
       <h3>Wedding Cake</h3>
     </div>
 
     <div class="photo-card">
-      <img src="cake5.jpg" alt="Barbie Cake">
+      <img src="cake5.jpg">
       <h3>Barbie Cake</h3>
     </div>
 
     <div class="photo-card">
-      <img src="cake6.jpg" alt="Toy Story Cake">
+      <img src="cake6.jpg">
       <h3>Toy Story Cake</h3>
     </div>
   </div>
@@ -225,60 +255,27 @@
 </div>
 
 <div class="section">
-  <h2>¿Qué ofrecemos?</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Pasteles Personalizados</h3>
-      <p>Diseños únicos para cada ocasión especial.</p>
-    </div>
-
-    <div class="card">
-      <h3>Postres Caseros</h3>
-      <p>Postres hechos con cuidado, sabor y dedicación.</p>
-    </div>
-
-    <div class="card">
-      <h3>Eventos Especiales</h3>
-      <p>Pasteles para bodas, cumpleaños, fiestas y más.</p>
-    </div>
-  </div>
-</div>
-
-<div class="section">
   <h2>¿Cómo ordenar?</h2>
-  <p>Ordenar tu pastel es fácil. Solo sigue estos pasos.</p>
+  <p>Escoge tu diseño, sabor, relleno y manda los detalles fácilmente.</p>
 
   <div class="steps">
-    <div class="step">
-      <h3>1. Elige tu idea</h3>
-      <p>Escoge un diseño o manda una foto de referencia.</p>
-    </div>
-
-    <div class="step">
-      <h3>2. Escoge sabor</h3>
-      <p>Selecciona el sabor del pastel y el relleno.</p>
-    </div>
-
-    <div class="step">
-      <h3>3. Manda detalles</h3>
-      <p>Comparte fecha, tamaño, colores y mensaje del pastel.</p>
-    </div>
-
-    <div class="step">
-      <h3>4. Confirma orden</h3>
-      <p>Nos comunicamos contigo para confirmar los detalles.</p>
-    </div>
+    <div class="step"><h3>1. Elige tu idea</h3><p>Manda una foto o inspírate con nuestro trabajo.</p></div>
+    <div class="step"><h3>2. Escoge sabor</h3><p>Selecciona sabor, relleno y tamaño.</p></div>
+    <div class="step"><h3>3. Manda detalles</h3><p>Fecha, colores y mensaje del pastel.</p></div>
+    <div class="step"><h3>4. Confirmamos</h3><p>Nos comunicamos contigo para finalizar.</p></div>
   </div>
 </div>
 
 <div class="order-section">
   <h2>¿Listo para ordenar tu pastel?</h2>
-  <p>
-    Haz tu orden hoy y cuéntanos cómo quieres tu pastel personalizado.
-  </p>
-
+  <p>Haz tu orden hoy y cuéntanos cómo quieres tu pastel personalizado.</p>
   <a class="button" href="order.html">Ordenar Ahora</a>
+</div>
+
+<div class="social-section">
+  <h2>Síguenos y Contáctanos</h2>
+  <a class="social-btn" href="https://www.instagram.com/blancaspasteles/" target="_blank">Instagram</a>
+  <a class="social-btn" href="https://wa.me/19012893587" target="_blank">WhatsApp</a>
 </div>
 
 <div class="contact">
@@ -290,6 +287,8 @@
 <footer>
   © 2026 Blanca's Pasteles y Postres
 </footer>
+
+<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
 
 </body>
 </html>
