@@ -103,6 +103,10 @@
       color: #8a2c6b;
     }
 
+    .form-group {
+      display: none;
+    }
+
     .estimate-box {
       background: #f8d7e6;
       border: 2px solid #ff69b4;
@@ -164,6 +168,30 @@
       font-size: 15px;
       line-height: 1.5;
       font-weight: 500;
+    }
+
+    .policy-check {
+      background: white;
+      border: 2px solid #f8a5c2;
+      color: #8a2c6b;
+      padding: 16px;
+      border-radius: 15px;
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .policy-check label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .policy-check input {
+      width: auto;
+      margin-top: 4px;
     }
 
     .submit-btn {
@@ -300,52 +328,83 @@
 
     <h2 class="form-section-title">Detalles de tu Orden</h2>
 
+    <label for="tipoOrden">Tipo de Orden</label>
+    <select id="tipoOrden" name="Tipo de Orden" required onchange="actualizarFormulario()">
+      <option value="">Selecciona una opción</option>
+      <option value="Pastel Personalizado">Pastel Personalizado</option>
+      <option value="Flan">Flan</option>
+      <option value="Cupcakes / Postres por Docena">Cupcakes / Postres por Docena</option>
+      <option value="Otro">Otro</option>
+    </select>
+
     <label for="nombre">Nombre</label>
     <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
 
     <label for="telefono">Número de Teléfono</label>
     <input type="tel" id="telefono" name="Telefono" placeholder="(000)-000-0000" required>
 
-    <label for="sabor">Sabor de Pastel</label>
-    <select id="sabor" name="Sabor de Pastel" required>
-      <option value="">Selecciona un sabor</option>
-      <option>Fresa</option>
-      <option>Chocolate</option>
-      <option>Vainilla</option>
-      <option>Red Velvet</option>
-      <option>Marble: Chocolate / Vainilla</option>
-    </select>
+    <div class="form-group" id="saborGroup">
+      <label for="sabor">Sabor</label>
+      <select id="sabor" name="Sabor">
+        <option value="">Selecciona un sabor</option>
+        <option>Fresa</option>
+        <option>Chocolate</option>
+        <option>Vainilla</option>
+        <option>Red Velvet</option>
+        <option>Marble: Chocolate / Vainilla</option>
+      </select>
+    </div>
 
-    <label for="relleno">Relleno</label>
-    <select id="relleno" name="Relleno" required>
-      <option value="">Selecciona un relleno</option>
-      <option>Fresas con crema</option>
-      <option>Fresas con crema, coco y nuez</option>
-      <option>Coco y nuez</option>
-      <option>Nutella con fresas</option>
-      <option>Mocha, coco y nuez</option>
-      <option>Duraznos con crema</option>
-      <option>Mango</option>
-      <option>Cajeta y nuez</option>
-      <option>Chispas de chocolate</option>
-      <option>Flan</option>
-    </select>
+    <div class="form-group" id="rellenoGroup">
+      <label for="relleno" id="rellenoLabel">Relleno</label>
+      <select id="relleno" name="Relleno / Frosting">
+        <option value="">Selecciona una opción</option>
+        <option>Fresas con crema</option>
+        <option>Fresas con crema, coco y nuez</option>
+        <option>Coco y nuez</option>
+        <option>Nutella con fresas</option>
+        <option>Mocha, coco y nuez</option>
+        <option>Duraznos con crema</option>
+        <option>Mango</option>
+        <option>Cajeta y nuez</option>
+        <option>Chispas de chocolate</option>
+        <option>Flan</option>
+      </select>
+    </div>
 
-    <label for="tamano">Tamaño del Pastel</label>
-    <select id="tamano" name="Tamaño" required onchange="calcularPrecio()">
-      <option value="">Selecciona un tamaño</option>
-      <option value="Pequeño">Pequeño</option>
-      <option value="Mediano">Mediano</option>
-      <option value="Grande">Grande</option>
-      <option value="Dos pisos">Dos pisos</option>
-      <option value="No estoy seguro/a">No estoy seguro/a</option>
-    </select>
+    <div class="form-group" id="frostingGroup">
+      <label for="frosting">Frosting</label>
+      <select id="frosting" name="Frosting">
+        <option value="">Selecciona frosting</option>
+        <option>Vainilla</option>
+        <option>Chocolate</option>
+        <option>Fresa</option>
+        <option>Crema batida</option>
+        <option>Buttercream</option>
+        <option>No estoy seguro/a</option>
+      </select>
+    </div>
+
+    <div class="form-group" id="tamanoGroup">
+      <label for="tamano">Tamaño del Pastel</label>
+      <select id="tamano" name="Tamaño" onchange="calcularPrecio()">
+        <option value="">Selecciona un tamaño</option>
+        <option value="Pequeño">Pequeño</option>
+        <option value="Mediano">Mediano</option>
+        <option value="Grande">Grande</option>
+        <option value="Dos pisos">Dos pisos</option>
+        <option value="No estoy seguro/a">No estoy seguro/a</option>
+      </select>
+    </div>
 
     <label for="fecha">Fecha que lo necesitas</label>
     <input type="date" id="fecha" name="Fecha" required onchange="calcularPrecio()">
 
     <label for="mensaje">Detalles especiales</label>
-    <textarea id="mensaje" name="Detalles Especiales" placeholder="Tema del pastel, colores, tamaño, mensaje en el pastel, cantidad de personas, etc."></textarea>
+    <textarea id="mensaje" name="Detalles Especiales" placeholder="Tema, colores, mensaje, cantidad, tipo de postre, diseño, etc."></textarea>
+
+    <label for="alergias">Alergias o notas importantes</label>
+    <textarea id="alergias" name="Alergias o Notas Importantes" placeholder="Ejemplo: alergia a nueces, fresas, coco, lácteos, etc. Si no hay alergias, puedes escribir 'ninguna'."></textarea>
 
     <label for="foto">Foto de referencia opcional</label>
     <input type="file" id="foto" name="Foto de Referencia" accept="image/*">
@@ -353,7 +412,7 @@
 
     <div class="estimate-box">
       <h3>Estimado Inicial</h3>
-      <div class="estimate-price" id="estimatePrice">Selecciona un tamaño</div>
+      <div class="estimate-price" id="estimatePrice">Selecciona tipo de orden</div>
       <p id="estimateText">
         El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.
       </p>
@@ -368,7 +427,14 @@
     </div>
 
     <div class="deposit-warning">
-      <strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$50</strong> después de enviar los detalles de tu pastel para reservar la fecha. El resto se paga después.
+      <strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$50</strong> después de enviar los detalles de tu orden para reservar la fecha. El resto se paga después.
+    </div>
+
+    <div class="policy-check">
+      <label>
+        <input type="checkbox" name="Acepta Política de Depósito" required>
+        Entiendo que se requiere un depósito no reembolsable de $50 para reservar la fecha y que el precio final puede cambiar dependiendo del diseño, tamaño y detalles especiales.
+      </label>
     </div>
 
     <button class="submit-btn" type="submit">Enviar Orden</button>
@@ -442,7 +508,59 @@
     return selected.getTime() === tomorrow.getTime() || selected.getTime() === dayAfterTomorrow.getTime();
   }
 
+  function actualizarFormulario() {
+    const tipoOrden = document.getElementById("tipoOrden").value;
+
+    const saborGroup = document.getElementById("saborGroup");
+    const rellenoGroup = document.getElementById("rellenoGroup");
+    const frostingGroup = document.getElementById("frostingGroup");
+    const tamanoGroup = document.getElementById("tamanoGroup");
+
+    const sabor = document.getElementById("sabor");
+    const relleno = document.getElementById("relleno");
+    const frosting = document.getElementById("frosting");
+    const tamano = document.getElementById("tamano");
+
+    saborGroup.style.display = "none";
+    rellenoGroup.style.display = "none";
+    frostingGroup.style.display = "none";
+    tamanoGroup.style.display = "none";
+
+    sabor.required = false;
+    relleno.required = false;
+    frosting.required = false;
+    tamano.required = false;
+
+    if (tipoOrden === "Pastel Personalizado") {
+      saborGroup.style.display = "block";
+      rellenoGroup.style.display = "block";
+      tamanoGroup.style.display = "block";
+
+      sabor.required = true;
+      relleno.required = true;
+      tamano.required = true;
+    }
+
+    if (tipoOrden === "Cupcakes / Postres por Docena") {
+      saborGroup.style.display = "block";
+      frostingGroup.style.display = "block";
+
+      sabor.required = true;
+      frosting.required = true;
+    }
+
+    if (tipoOrden === "Flan" || tipoOrden === "Otro" || tipoOrden === "") {
+      sabor.value = "";
+      relleno.value = "";
+      frosting.value = "";
+      tamano.value = "";
+    }
+
+    calcularPrecio();
+  }
+
   function calcularPrecio() {
+    const tipoOrden = document.getElementById("tipoOrden").value;
     const tamano = document.getElementById("tamano").value;
     const estimatePrice = document.getElementById("estimatePrice");
     const estimateText = document.getElementById("estimateText");
@@ -452,26 +570,46 @@
     let basePrice = null;
     let description = "";
 
-    if (tamano === "Pequeño") {
-      basePrice = 50;
-      description = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
-    } else if (tamano === "Mediano") {
-      basePrice = 80;
-      description = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
-    } else if (tamano === "Grande") {
-      basePrice = 100;
-      description = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
-    } else if (tamano === "Dos pisos") {
-      basePrice = 150;
-      description = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
-    } else if (tamano === "No estoy seguro/a") {
+    if (tipoOrden === "Flan") {
+      basePrice = 35;
+      description = "Flan. Precio inicial desde $35.";
+    } else if (tipoOrden === "Cupcakes / Postres por Docena") {
+      basePrice = 40;
+      description = "Cupcakes o postres por docena. Precio inicial desde $40.";
+    } else if (tipoOrden === "Otro") {
       estimatePrice.textContent = "Precio por confirmar";
-      estimateText.textContent = "Nos comunicaremos contigo para recomendarte el mejor tamaño según tu evento.";
+      estimateText.textContent = "Nos comunicaremos contigo para confirmar precio según lo que necesites.";
       rushAdded.style.display = isRushDate() ? "block" : "none";
       precioEstimadoInput.value = isRushDate() ? "Precio por confirmar + cargo de último momento de $25" : "Precio por confirmar";
       return;
+    } else if (tipoOrden === "Pastel Personalizado") {
+      if (tamano === "Pequeño") {
+        basePrice = 50;
+        description = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
+      } else if (tamano === "Mediano") {
+        basePrice = 80;
+        description = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
+      } else if (tamano === "Grande") {
+        basePrice = 100;
+        description = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
+      } else if (tamano === "Dos pisos") {
+        basePrice = 150;
+        description = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
+      } else if (tamano === "No estoy seguro/a") {
+        estimatePrice.textContent = "Precio por confirmar";
+        estimateText.textContent = "Nos comunicaremos contigo para recomendarte el mejor tamaño según tu evento.";
+        rushAdded.style.display = isRushDate() ? "block" : "none";
+        precioEstimadoInput.value = isRushDate() ? "Precio por confirmar + cargo de último momento de $25" : "Precio por confirmar";
+        return;
+      } else {
+        estimatePrice.textContent = "Selecciona un tamaño";
+        estimateText.textContent = "Selecciona el tamaño de pastel para ver el estimado inicial.";
+        rushAdded.style.display = "none";
+        precioEstimadoInput.value = "";
+        return;
+      }
     } else {
-      estimatePrice.textContent = "Selecciona un tamaño";
+      estimatePrice.textContent = "Selecciona tipo de orden";
       estimateText.textContent = "El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.";
       rushAdded.style.display = "none";
       precioEstimadoInput.value = "";
@@ -495,7 +633,7 @@
   }
 
   setupDateLimit();
-  calcularPrecio();
+  actualizarFormulario();
 </script>
 
 </body>
