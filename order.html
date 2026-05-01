@@ -103,6 +103,19 @@
       color: #8a2c6b;
     }
 
+    .deposit-warning {
+      background: #fff3f8;
+      border: 2px solid #ff69b4;
+      color: #8a2c6b;
+      padding: 16px;
+      border-radius: 15px;
+      margin-top: 22px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
     .submit-btn {
       width: 100%;
       margin-top: 25px;
@@ -286,6 +299,10 @@
     <label for="foto">Foto de referencia opcional</label>
     <input type="file" id="foto" name="Foto de Referencia" accept="image/*">
     <p class="note">Puedes agregar una foto para mostrar el estilo o diseño que quieres.</p>
+
+    <div class="deposit-warning">
+      <strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$50</strong> después de enviar los detalles de tu pastel para reservar la fecha. El resto se paga después.
+    </div>
 
     <button class="submit-btn" type="submit">Enviar Orden</button>
 
