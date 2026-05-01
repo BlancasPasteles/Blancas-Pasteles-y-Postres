@@ -272,27 +272,6 @@
       text-align: center;
       font-size: 13px;
     }
-
-    @media (max-width: 700px) {
-      .topbar {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .nav a {
-        margin: 8px;
-        display: inline-block;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-
-      .form-box {
-        margin: 20px;
-        padding: 25px;
-      }
-    }
   </style>
 </head>
 
@@ -300,7 +279,6 @@
 
 <div class="topbar">
   <div class="logo">Blanca's Pasteles</div>
-
   <div class="nav">
     <a href="index.html">Inicio</a>
     <a href="work.html">Trabajo Anterior</a>
@@ -318,378 +296,245 @@
 </p>
 
 <div class="form-box">
-  <form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="guardarResumenOrden()">
+<form action="https://formsubmit.co/dcruz082007@gmail.com" method="POST" enctype="multipart/form-data" onsubmit="guardarResumenOrden()">
 
-    <input type="hidden" name="_subject" value="Nueva Orden de Pastel">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://blancaspasteles.github.io/Blancas-Pasteles-y-Postres/thankyou.html">
-    <input type="hidden" id="precioEstimadoInput" name="Precio Estimado" value="">
+<input type="hidden" name="_subject" value="Nueva Orden de Pastel">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://blancaspasteles.github.io/Blancas-Pasteles-y-Postres/thankyou.html">
+<input type="hidden" id="precioEstimadoInput" name="Precio Estimado" value="">
+<input type="hidden" id="depositoInput" name="Deposito Requerido" value="">
 
-    <h2 class="form-section-title">Detalles de tu Orden</h2>
+<h2 class="form-section-title">Detalles de tu Orden</h2>
 
-    <label for="tipoOrden">Tipo de Orden</label>
-    <select id="tipoOrden" name="Tipo de Orden" required onchange="actualizarFormulario()">
-      <option value="">Selecciona una opción</option>
-      <option value="Pastel Personalizado">Pastel Personalizado</option>
-      <option value="Flan">Flan</option>
-      <option value="Cupcakes / Postres por Docena">Cupcakes / Postres por Docena</option>
-      <option value="Otro">Otro</option>
-    </select>
+<label for="tipoOrden">Tipo de Orden</label>
+<select id="tipoOrden" name="Tipo de Orden" required onchange="actualizarFormulario()">
+<option value="">Selecciona una opción</option>
+<option value="Pastel Personalizado">Pastel Personalizado</option>
+<option value="Flan">Flan</option>
+<option value="Cupcakes / Postres por Docena">Cupcakes / Postres por Docena</option>
+<option value="Otro">Otro</option>
+</select>
 
-    <label for="nombre">Nombre</label>
-    <input type="text" id="nombre" name="Nombre" placeholder="Tu nombre" required>
+<label for="nombre">Nombre</label>
+<input type="text" id="nombre" name="Nombre" required>
 
-    <label for="telefono">Número de Teléfono</label>
-    <input type="tel" id="telefono" name="Telefono" placeholder="(000)-000-0000" required>
+<label for="telefono">Número de Teléfono</label>
+<input type="tel" id="telefono" name="Telefono" required>
 
-    <div class="form-group" id="saborGroup">
-      <label for="sabor">Sabor</label>
-      <select id="sabor" name="Sabor">
-        <option value="">Selecciona un sabor</option>
-        <option>Fresa</option>
-        <option>Chocolate</option>
-        <option>Vainilla</option>
-        <option>Red Velvet</option>
-        <option>Marble: Chocolate / Vainilla</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="rellenoGroup">
-      <label for="relleno">Relleno</label>
-      <select id="relleno" name="Relleno">
-        <option value="">Selecciona un relleno</option>
-        <option>Fresas con crema</option>
-        <option>Fresas con crema, coco y nuez</option>
-        <option>Coco y nuez</option>
-        <option>Nutella con fresas</option>
-        <option>Mocha, coco y nuez</option>
-        <option>Duraznos con crema</option>
-        <option>Mango</option>
-        <option>Cajeta y nuez</option>
-        <option>Chispas de chocolate</option>
-        <option>Flan</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="frostingGroup">
-      <label for="frosting">Frosting</label>
-      <select id="frosting" name="Frosting">
-        <option value="">Selecciona frosting</option>
-        <option>Vainilla</option>
-        <option>Chocolate</option>
-        <option>Fresa</option>
-        <option>Crema batida</option>
-        <option>Buttercream</option>
-        <option>No estoy seguro/a</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="tamanoGroup">
-      <label for="tamano">Tamaño del Pastel</label>
-      <select id="tamano" name="Tamaño" onchange="calcularPrecio()">
-        <option value="">Selecciona un tamaño</option>
-        <option value="Pequeño">Pequeño</option>
-        <option value="Mediano">Mediano</option>
-        <option value="Grande">Grande</option>
-        <option value="Dos pisos">Dos pisos</option>
-        <option value="No estoy seguro/a">No estoy seguro/a</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="flanCantidadGroup">
-      <label for="cantidadFlan">Cantidad de Flanes</label>
-      <select id="cantidadFlan" name="Cantidad de Flanes" onchange="calcularPrecio()">
-        <option value="1">1 flan</option>
-        <option value="2">2 flanes</option>
-        <option value="3">3 flanes</option>
-        <option value="4">4 flanes</option>
-        <option value="5">5 flanes</option>
-        <option value="6">6 flanes</option>
-      </select>
-    </div>
-
-    <div class="form-group" id="docenaCantidadGroup">
-      <label for="cantidadDocenas">Cantidad de Docenas</label>
-      <select id="cantidadDocenas" name="Cantidad de Docenas" onchange="calcularPrecio()">
-        <option value="1">1 docena</option>
-        <option value="2">2 docenas</option>
-        <option value="3">3 docenas</option>
-        <option value="4">4 docenas</option>
-        <option value="5">5 docenas</option>
-        <option value="6">6 docenas</option>
-      </select>
-    </div>
-
-    <label for="fecha">Fecha que lo necesitas</label>
-    <input type="date" id="fecha" name="Fecha" required onchange="calcularPrecio()">
-
-    <label for="mensaje">Detalles especiales</label>
-    <textarea id="mensaje" name="Detalles Especiales" placeholder="Tema, colores, mensaje, cantidad, tipo de postre, diseño, etc."></textarea>
-
-    <label for="alergias">Alergias o notas importantes</label>
-    <textarea id="alergias" name="Alergias o Notas Importantes" placeholder="Ejemplo: alergia a nueces, fresas, coco, lácteos, etc. Si no hay alergias, puedes escribir 'ninguna'."></textarea>
-
-    <label for="foto">Foto de referencia opcional</label>
-    <input type="file" id="foto" name="Foto de Referencia" accept="image/*">
-    <p class="note">Puedes agregar una foto para mostrar el estilo o diseño que quieres.</p>
-
-    <div class="estimate-box">
-      <h3>Estimado Inicial</h3>
-      <div class="estimate-price" id="estimatePrice">Selecciona tipo de orden</div>
-      <p id="estimateText">
-        El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.
-      </p>
-
-      <div class="rush-added" id="rushAdded">
-        Cargo de último momento agregado: +$25
-      </div>
-    </div>
-
-    <div class="rush-warning">
-      <strong>Órdenes de último momento:</strong> Si tu fecha es para mañana o pasado mañana, se agregará un cargo de último momento de <strong>$25</strong>.
-    </div>
-
-    <div class="deposit-warning">
-      <strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$50</strong> después de enviar los detalles de tu orden para reservar la fecha. El resto se paga después.
-    </div>
-
-    <div class="policy-check">
-      <label>
-        <input type="checkbox" name="Acepta Política de Depósito" required>
-        Entiendo que se requiere un depósito no reembolsable de $50 para reservar la fecha y que el precio final puede cambiar dependiendo del diseño, tamaño y detalles especiales.
-      </label>
-    </div>
-
-    <button class="submit-btn" type="submit">Enviar Orden</button>
-
-  </form>
+<div class="form-group" id="saborGroup">
+<label for="sabor">Sabor</label>
+<select id="sabor" name="Sabor">
+<option value="">Selecciona un sabor</option>
+<option>Fresa</option>
+<option>Chocolate</option>
+<option>Vainilla</option>
+<option>Red Velvet</option>
+<option>Marble: Chocolate / Vainilla</option>
+</select>
 </div>
 
-<a class="button" href="flavors.html">Ver Sabores</a>
-<a class="button home-button" href="index.html">Volver al Inicio</a>
-
-<div class="social-section">
-  <h2>Síguenos y Contáctanos</h2>
-  <a class="social-btn" href="https://www.instagram.com/blancaspasteles/" target="_blank">Instagram</a>
-  <a class="social-btn" href="https://wa.me/19012893587" target="_blank">WhatsApp</a>
+<div class="form-group" id="rellenoGroup">
+<label for="relleno">Relleno</label>
+<select id="relleno" name="Relleno">
+<option value="">Selecciona un relleno</option>
+<option>Fresas con crema</option>
+<option>Fresas con crema, coco y nuez</option>
+<option>Coco y nuez</option>
+<option>Nutella con fresas</option>
+<option>Mocha, coco y nuez</option>
+<option>Duraznos con crema</option>
+<option>Mango</option>
+<option>Cajeta y nuez</option>
+<option>Chispas de chocolate</option>
+</select>
 </div>
 
-<footer>
-  © 2026 Blanca's Pasteles y Postres
-</footer>
+<div class="form-group" id="frostingGroup">
+<label for="frosting">Frosting</label>
+<select id="frosting" name="Frosting">
+<option value="">Selecciona frosting</option>
+<option>Vainilla</option>
+<option>Chocolate</option>
+<option>Fresa</option>
+<option>Crema batida</option>
+<option>Buttercream</option>
+<option>No estoy seguro/a</option>
+</select>
+</div>
 
-<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
+<div class="form-group" id="tamanoGroup">
+<label for="tamano">Tamaño del Pastel</label>
+<select id="tamano" name="Tamaño" onchange="calcularPrecio()">
+<option value="">Selecciona un tamaño</option>
+<option value="Pequeño">Pequeño</option>
+<option value="Mediano">Mediano</option>
+<option value="Grande">Grande</option>
+<option value="Dos pisos">Dos pisos</option>
+<option value="No estoy seguro/a">No estoy seguro/a</option>
+</select>
+</div>
+
+<div class="form-group" id="flanCantidadGroup">
+<label for="cantidadFlan">Cantidad de Flanes</label>
+<select id="cantidadFlan" name="Cantidad de Flanes" onchange="calcularPrecio()">
+<option value="1">1 flan</option>
+<option value="2">2 flanes</option>
+<option value="3">3 flanes</option>
+<option value="4">4 flanes</option>
+<option value="5">5 flanes</option>
+</select>
+</div>
+
+<div class="form-group" id="docenaCantidadGroup">
+<label for="cantidadDocenas">Cantidad de Docenas</label>
+<select id="cantidadDocenas" name="Cantidad de Docenas" onchange="calcularPrecio()">
+<option value="1">1 docena</option>
+<option value="2">2 docenas</option>
+<option value="3">3 docenas</option>
+<option value="4">4 docenas</option>
+<option value="5">5 docenas</option>
+</select>
+</div>
+
+<label for="fecha">Fecha que lo necesitas</label>
+<input type="date" id="fecha" name="Fecha" required onchange="calcularPrecio()">
+
+<label for="mensaje">Detalles especiales</label>
+<textarea id="mensaje" name="Detalles Especiales"></textarea>
+
+<label for="alergias">Alergias o notas importantes</label>
+<textarea id="alergias" name="Alergias"></textarea>
+
+<label for="foto">Foto de referencia opcional</label>
+<input type="file" id="foto" name="Foto de Referencia" accept="image/*">
+
+<div class="estimate-box">
+<h3>Estimado Inicial</h3>
+<div class="estimate-price" id="estimatePrice">Selecciona tipo de orden</div>
+<p id="estimateText">El precio final puede cambiar dependiendo del diseño y detalles especiales.</p>
+<div class="rush-added" id="rushAdded">Cargo de último momento agregado: +$25</div>
+</div>
+
+<div class="rush-warning">
+<strong>Órdenes de último momento:</strong> mañana o pasado mañana agregan +$25.
+</div>
+
+<div class="deposit-warning" id="depositWarning">
+<strong>Importante:</strong> Se requiere un depósito no reembolsable para reservar la fecha.
+</div>
+
+<div class="policy-check">
+<label>
+<input type="checkbox" required>
+Entiendo que se requiere un depósito no reembolsable para reservar la fecha.
+</label>
+</div>
+
+<button class="submit-btn" type="submit">Enviar Orden</button>
+
+</form>
+</div>
 
 <script>
-  const rushFee = 25;
+const rushFee = 25;
 
-  function getTodayLocal() {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
-    return today;
-  }
+function getTodayLocal(){const t=new Date();t.setHours(0,0,0,0);return t;}
+function formatDateLocal(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;}
+function setupDateLimit(){const f=document.getElementById("fecha");const tom=getTodayLocal();tom.setDate(tom.getDate()+1);f.min=formatDateLocal(tom);}
+function getSelectedDate(){const v=document.getElementById("fecha").value;if(!v)return null;const s=new Date(v+"T00:00:00");s.setHours(0,0,0,0);return s;}
+function isRushDate(){const s=getSelectedDate();if(!s)return false;const t=getTodayLocal();t.setDate(t.getDate()+1);const d=getTodayLocal();d.setDate(d.getDate()+2);return s.getTime()===t.getTime()||s.getTime()===d.getTime();}
 
-  function formatDateLocal(date) {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  }
+function obtenerDeposito(){
+const tipo=document.getElementById("tipoOrden").value;
+if(tipo==="Flan"||tipo==="Cupcakes / Postres por Docena"){return 25;}
+return 50;
+}
 
-  function setupDateLimit() {
-    const fechaInput = document.getElementById("fecha");
-    const tomorrow = getTodayLocal();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    fechaInput.min = formatDateLocal(tomorrow);
-  }
+function actualizarDeposito(){
+const dep=obtenerDeposito();
+document.getElementById("depositWarning").innerHTML=`<strong>Importante:</strong> Se requiere un depósito no reembolsable de <strong>$${dep}</strong> para reservar la fecha.`;
+document.getElementById("depositoInput").value="$"+dep;
+}
 
-  function getSelectedDate() {
-    const fechaValue = document.getElementById("fecha").value;
-    if (!fechaValue) return null;
+function actualizarFormulario(){
+const tipo=document.getElementById("tipoOrden").value;
 
-    const selected = new Date(fechaValue + "T00:00:00");
-    selected.setHours(0, 0, 0, 0);
-    return selected;
-  }
+["saborGroup","rellenoGroup","frostingGroup","tamanoGroup","flanCantidadGroup","docenaCantidadGroup"].forEach(id=>document.getElementById(id).style.display="none");
 
-  function isRushDate() {
-    const selected = getSelectedDate();
-    if (!selected) return false;
+if(tipo==="Pastel Personalizado"){
+document.getElementById("saborGroup").style.display="block";
+document.getElementById("rellenoGroup").style.display="block";
+document.getElementById("tamanoGroup").style.display="block";
+}
+if(tipo==="Flan"){
+document.getElementById("flanCantidadGroup").style.display="block";
+}
+if(tipo==="Cupcakes / Postres por Docena"){
+document.getElementById("saborGroup").style.display="block";
+document.getElementById("frostingGroup").style.display="block";
+document.getElementById("docenaCantidadGroup").style.display="block";
+}
 
-    const tomorrow = getTodayLocal();
-    tomorrow.setDate(tomorrow.getDate() + 1);
+actualizarDeposito();
+calcularPrecio();
+}
 
-    const dayAfterTomorrow = getTodayLocal();
-    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+function calcularPrecio(){
+const tipo=document.getElementById("tipoOrden").value;
+const tam=document.getElementById("tamano").value;
+const flan=parseInt(document.getElementById("cantidadFlan").value||1);
+const doc=parseInt(document.getElementById("cantidadDocenas").value||1);
 
-    return selected.getTime() === tomorrow.getTime() || selected.getTime() === dayAfterTomorrow.getTime();
-  }
+let base=null;
+let desc="";
 
-  function actualizarFormulario() {
-    const tipoOrden = document.getElementById("tipoOrden").value;
+if(tipo==="Flan"){base=35*flan;desc=flan+" flan(es).";}
+else if(tipo==="Cupcakes / Postres por Docena"){base=40*doc;desc=doc+" docena(s).";}
+else if(tipo==="Pastel Personalizado"){
+if(tam==="Pequeño"){base=50;desc="Pastel pequeño.";}
+else if(tam==="Mediano"){base=80;desc="Pastel mediano.";}
+else if(tam==="Grande"){base=100;desc="Pastel grande.";}
+else if(tam==="Dos pisos"){base=150;desc="Pastel de dos pisos o más.";}
+else {document.getElementById("estimatePrice").textContent="Selecciona un tamaño";return;}
+}
+else if(tipo==="Otro"){
+document.getElementById("estimatePrice").textContent="Precio por confirmar";return;
+}
+else{
+document.getElementById("estimatePrice").textContent="Selecciona tipo de orden";return;
+}
 
-    const saborGroup = document.getElementById("saborGroup");
-    const rellenoGroup = document.getElementById("rellenoGroup");
-    const frostingGroup = document.getElementById("frostingGroup");
-    const tamanoGroup = document.getElementById("tamanoGroup");
-    const flanCantidadGroup = document.getElementById("flanCantidadGroup");
-    const docenaCantidadGroup = document.getElementById("docenaCantidadGroup");
+let total=base;
+if(isRushDate()){total+=rushFee;document.getElementById("rushAdded").style.display="block";}
+else{document.getElementById("rushAdded").style.display="none";}
 
-    const sabor = document.getElementById("sabor");
-    const relleno = document.getElementById("relleno");
-    const frosting = document.getElementById("frosting");
-    const tamano = document.getElementById("tamano");
+document.getElementById("estimatePrice").textContent="$"+total+"+";
+document.getElementById("estimateText").textContent=desc;
+document.getElementById("precioEstimadoInput").value="$"+total+"+";
+}
 
-    saborGroup.style.display = "none";
-    rellenoGroup.style.display = "none";
-    frostingGroup.style.display = "none";
-    tamanoGroup.style.display = "none";
-    flanCantidadGroup.style.display = "none";
-    docenaCantidadGroup.style.display = "none";
+function guardarResumenOrden(){
+const resumen={
+tipoOrden:document.getElementById("tipoOrden").value,
+nombre:document.getElementById("nombre").value,
+telefono:document.getElementById("telefono").value,
+sabor:document.getElementById("sabor").value,
+relleno:document.getElementById("relleno").value,
+frosting:document.getElementById("frosting").value,
+tamano:document.getElementById("tamano").value,
+cantidadFlan:document.getElementById("cantidadFlan").value,
+cantidadDocenas:document.getElementById("cantidadDocenas").value,
+fecha:document.getElementById("fecha").value,
+alergias:document.getElementById("alergias").value,
+precioEstimado:document.getElementById("precioEstimadoInput").value,
+deposito:document.getElementById("depositoInput").value
+};
+localStorage.setItem("resumenOrdenBlancas",JSON.stringify(resumen));
+}
 
-    sabor.required = false;
-    relleno.required = false;
-    frosting.required = false;
-    tamano.required = false;
-
-    if (tipoOrden === "Pastel Personalizado") {
-      saborGroup.style.display = "block";
-      rellenoGroup.style.display = "block";
-      tamanoGroup.style.display = "block";
-
-      sabor.required = true;
-      relleno.required = true;
-      tamano.required = true;
-    }
-
-    if (tipoOrden === "Flan") {
-      flanCantidadGroup.style.display = "block";
-      sabor.value = "";
-      relleno.value = "";
-      frosting.value = "";
-      tamano.value = "";
-    }
-
-    if (tipoOrden === "Cupcakes / Postres por Docena") {
-      saborGroup.style.display = "block";
-      frostingGroup.style.display = "block";
-      docenaCantidadGroup.style.display = "block";
-
-      sabor.required = true;
-      frosting.required = true;
-
-      relleno.value = "";
-      tamano.value = "";
-    }
-
-    if (tipoOrden === "Otro" || tipoOrden === "") {
-      sabor.value = "";
-      relleno.value = "";
-      frosting.value = "";
-      tamano.value = "";
-    }
-
-    calcularPrecio();
-  }
-
-  function calcularPrecio() {
-    const tipoOrden = document.getElementById("tipoOrden").value;
-    const tamano = document.getElementById("tamano").value;
-    const cantidadFlan = parseInt(document.getElementById("cantidadFlan").value);
-    const cantidadDocenas = parseInt(document.getElementById("cantidadDocenas").value);
-
-    const estimatePrice = document.getElementById("estimatePrice");
-    const estimateText = document.getElementById("estimateText");
-    const rushAdded = document.getElementById("rushAdded");
-    const precioEstimadoInput = document.getElementById("precioEstimadoInput");
-
-    let basePrice = null;
-    let description = "";
-
-    if (tipoOrden === "Flan") {
-      basePrice = 35 * cantidadFlan;
-      description = cantidadFlan + " flan(es). Precio inicial desde $35 cada uno.";
-    } else if (tipoOrden === "Cupcakes / Postres por Docena") {
-      basePrice = 40 * cantidadDocenas;
-      description = cantidadDocenas + " docena(s). Precio inicial desde $40 por docena.";
-    } else if (tipoOrden === "Otro") {
-      estimatePrice.textContent = "Precio por confirmar";
-      estimateText.textContent = "Nos comunicaremos contigo para confirmar precio según lo que necesites.";
-      rushAdded.style.display = isRushDate() ? "block" : "none";
-      precioEstimadoInput.value = isRushDate() ? "Precio por confirmar + cargo de último momento de $25" : "Precio por confirmar";
-      return;
-    } else if (tipoOrden === "Pastel Personalizado") {
-      if (tamano === "Pequeño") {
-        basePrice = 50;
-        description = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
-      } else if (tamano === "Mediano") {
-        basePrice = 80;
-        description = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
-      } else if (tamano === "Grande") {
-        basePrice = 100;
-        description = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
-      } else if (tamano === "Dos pisos") {
-        basePrice = 150;
-        description = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
-      } else if (tamano === "No estoy seguro/a") {
-        estimatePrice.textContent = "Precio por confirmar";
-        estimateText.textContent = "Nos comunicaremos contigo para recomendarte el mejor tamaño según tu evento.";
-        rushAdded.style.display = isRushDate() ? "block" : "none";
-        precioEstimadoInput.value = isRushDate() ? "Precio por confirmar + cargo de último momento de $25" : "Precio por confirmar";
-        return;
-      } else {
-        estimatePrice.textContent = "Selecciona un tamaño";
-        estimateText.textContent = "Selecciona el tamaño de pastel para ver el estimado inicial.";
-        rushAdded.style.display = "none";
-        precioEstimadoInput.value = "";
-        return;
-      }
-    } else {
-      estimatePrice.textContent = "Selecciona tipo de orden";
-      estimateText.textContent = "El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.";
-      rushAdded.style.display = "none";
-      precioEstimadoInput.value = "";
-      return;
-    }
-
-    let total = basePrice;
-
-    if (isRushDate()) {
-      total += rushFee;
-      rushAdded.style.display = "block";
-      estimatePrice.textContent = "$" + total + "+";
-      estimateText.textContent = description + " Incluye cargo de último momento.";
-      precioEstimadoInput.value = "$" + total + "+ incluyendo cargo de último momento";
-    } else {
-      rushAdded.style.display = "none";
-      estimatePrice.textContent = "$" + basePrice + "+";
-      estimateText.textContent = description;
-      precioEstimadoInput.value = "$" + basePrice + "+";
-    }
-  }
-
-  function guardarResumenOrden() {
-    const resumen = {
-      tipoOrden: document.getElementById("tipoOrden").value,
-      nombre: document.getElementById("nombre").value,
-      telefono: document.getElementById("telefono").value,
-      sabor: document.getElementById("sabor").value,
-      relleno: document.getElementById("relleno").value,
-      frosting: document.getElementById("frosting").value,
-      tamano: document.getElementById("tamano").value,
-      cantidadFlan: document.getElementById("cantidadFlan").value,
-      cantidadDocenas: document.getElementById("cantidadDocenas").value,
-      fecha: document.getElementById("fecha").value,
-      alergias: document.getElementById("alergias").value,
-      precioEstimado: document.getElementById("precioEstimadoInput").value
-    };
-
-    localStorage.setItem("resumenOrdenBlancas", JSON.stringify(resumen));
-  }
-
-  setupDateLimit();
-  actualizarFormulario();
+setupDateLimit();
+actualizarFormulario();
 </script>
 
 </body>
