@@ -103,6 +103,31 @@
       color: #8a2c6b;
     }
 
+    .estimate-box {
+      background: #f8d7e6;
+      border: 2px solid #ff69b4;
+      color: #8a2c6b;
+      padding: 18px;
+      border-radius: 18px;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.5;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .estimate-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+
+    .estimate-price {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+
     .rush-warning {
       background: #fff8e8;
       border: 2px solid #f0b45b;
@@ -294,13 +319,13 @@
     </select>
 
     <label for="tamano">Tamaño del Pastel</label>
-    <select id="tamano" name="Tamaño" required>
+    <select id="tamano" name="Tamaño" required onchange="calcularPrecio()">
       <option value="">Selecciona un tamaño</option>
-      <option>Pequeño</option>
-      <option>Mediano</option>
-      <option>Grande</option>
-      <option>Dos pisos</option>
-      <option>No estoy seguro/a</option>
+      <option value="Pequeño">Pequeño</option>
+      <option value="Mediano">Mediano</option>
+      <option value="Grande">Grande</option>
+      <option value="Dos pisos">Dos pisos</option>
+      <option value="No estoy seguro/a">No estoy seguro/a</option>
     </select>
 
     <label for="fecha">Fecha que lo necesitas</label>
@@ -312,6 +337,14 @@
     <label for="foto">Foto de referencia opcional</label>
     <input type="file" id="foto" name="Foto de Referencia" accept="image/*">
     <p class="note">Puedes agregar una foto para mostrar el estilo o diseño que quieres.</p>
+
+    <div class="estimate-box">
+      <h3>Estimado Inicial</h3>
+      <div class="estimate-price" id="estimatePrice">Selecciona un tamaño</div>
+      <p id="estimateText">
+        El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.
+      </p>
+    </div>
 
     <div class="rush-warning">
       <strong>Ordenes de último momento:</strong> Las órdenes con poco tiempo de anticipación pueden tener un cargo extra dependiendo del diseño, tamaño y disponibilidad.
@@ -340,6 +373,34 @@
 </footer>
 
 <a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
+
+<script>
+  function calcularPrecio() {
+    const tamano = document.getElementById("tamano").value;
+    const estimatePrice = document.getElementById("estimatePrice");
+    const estimateText = document.getElementById("estimateText");
+
+    if (tamano === "Pequeño") {
+      estimatePrice.textContent = "$50+";
+      estimateText.textContent = "Pastel pequeño. Sirve aproximadamente 10 a 20 personas.";
+    } else if (tamano === "Mediano") {
+      estimatePrice.textContent = "$80+";
+      estimateText.textContent = "Pastel mediano. Sirve aproximadamente 20 a 40 personas.";
+    } else if (tamano === "Grande") {
+      estimatePrice.textContent = "$100+";
+      estimateText.textContent = "Pastel grande. Sirve aproximadamente 50 a 80 personas.";
+    } else if (tamano === "Dos pisos") {
+      estimatePrice.textContent = "$150+";
+      estimateText.textContent = "Pastel de dos pisos o más. Sirve aproximadamente 100+ personas.";
+    } else if (tamano === "No estoy seguro/a") {
+      estimatePrice.textContent = "Precio por confirmar";
+      estimateText.textContent = "Nos comunicaremos contigo para recomendarte el mejor tamaño según tu evento.";
+    } else {
+      estimatePrice.textContent = "Selecciona un tamaño";
+      estimateText.textContent = "El precio final puede cambiar dependiendo del diseño, decoración, relleno y detalles especiales.";
+    }
+  }
+</script>
 
 </body>
 </html>
