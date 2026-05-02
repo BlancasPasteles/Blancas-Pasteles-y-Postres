@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | Blanca's Pasteles</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -27,13 +28,13 @@
       margin: 0 auto 10px;
     }
 
-    header h1 {
-      margin: 0;
+    header h1, h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
     }
 
-    .thankyou-section {
+    .thankyou-section,
+    .summary-section,
+    .payment-section {
       max-width: 750px;
       margin: 30px auto;
       padding: 30px 20px;
@@ -41,31 +42,14 @@
       border-radius: 20px;
       border: 2px solid #f8a5c2;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .thankyou-section h2 {
-      margin-top: 0;
-      font-size: 32px;
-      font-family: 'Playfair Display', serif;
     }
 
     .summary-section {
-      max-width: 750px;
-      margin: 30px auto;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 20px;
-      border: 2px solid #f8a5c2;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
       text-align: left;
-      color: #8a2c6b;
     }
 
     .summary-section h2 {
       text-align: center;
-      font-size: 30px;
-      margin-top: 0;
-      font-family: 'Playfair Display', serif;
     }
 
     .summary-row {
@@ -79,31 +63,17 @@
       min-width: 160px;
     }
 
-    .payment-section {
-      max-width: 750px;
-      margin: 30px auto;
-      padding: 30px 20px;
-      background: white;
-      border-radius: 20px;
-      border: 2px solid #f8a5c2;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
-
-    .payment-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 30px;
-      margin-top: 0;
-    }
-
-    .payment-btn {
+    .deposit-btn {
       display: inline-block;
       background: #ff69b4;
       color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
+      padding: 16px 32px;
+      border-radius: 35px;
       text-decoration: none;
-      font-weight: 600;
-      margin: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .zelle-box {
@@ -127,64 +97,58 @@
       border-radius: 30px;
       font-weight: 600;
     }
-
-    @media (max-width:700px){
-      .logo{width:150px;}
-    }
   </style>
 </head>
+
 <body>
 
 <header>
-  <img src="logo.png" alt="Blanca's Pasteles Logo" class="logo" />
+  <img src="logo.png" alt="Blanca's Pasteles Logo" class="logo">
   <h1>Blanca's Pasteles</h1>
   <p>Gracias por tu orden</p>
 </header>
 
 <section class="thankyou-section">
-  <h2>Thank You For Your Order!</h2>
-  <p>
-    Your order request has been submitted successfully. We will review your order details and contact you shortly regarding final pricing and confirmation.
-  </p>
-  <p id="depositIntro">
-    A deposit is required to reserve your event date after submitting your order details. The remaining balance will be paid later.
-  </p>
+  <h2>¡Orden Enviada!</h2>
+  <p>Tu solicitud de orden fue enviada correctamente. Revisaremos los detalles y nos comunicaremos contigo pronto.</p>
+  <p id="depositIntro">Se requiere un depósito para reservar tu fecha.</p>
 </section>
 
 <section class="summary-section" id="summarySection">
-  <h2>Order Summary</h2>
+  <h2>Resumen de tu Orden</h2>
   <div id="orderSummary"></div>
 </section>
 
 <section class="payment-section">
-  <h2 id="depositTitle">Send Your Deposit</h2>
+  <h2 id="depositTitle">Enviar Depósito</h2>
 
-  <div class="payment-buttons">
-    <a href="https://cash.app/$blancaspasteles" target="_blank" class="payment-btn" id="cashappButton">
-      Pay Deposit with Cash App
-    </a>
+  <a href="#" target="_blank" class="deposit-btn" id="squareDepositButton">
+    Send Deposit Now
+  </a>
 
-    <div class="zelle-box">
-      <strong>Zelle:</strong> 901-289-3587
-    </div>
+  <div class="zelle-box">
+    <strong>Zelle:</strong> 901-289-3587
   </div>
 
   <p class="payment-note" id="paymentNote">
-    Please include your full name and event date in the payment note. Orders are not officially reserved until the deposit is received.
+    Por favor incluye tu nombre completo y fecha del evento en la nota del pago.
   </p>
 </section>
 
 <div class="back-home">
-  <a href="index.html">Return to Home</a>
+  <a href="index.html">Volver al Inicio</a>
 </div>
 
 <script>
+const cakeDepositLink = "https://square.link/u/6fE7tsoH";
+const dessertDepositLink = "https://square.link/u/f2TVFOrY";
+
 const savedSummary = localStorage.getItem("resumenOrdenBlancas");
 const orderSummary = document.getElementById("orderSummary");
 const summarySection = document.getElementById("summarySection");
 const depositIntro = document.getElementById("depositIntro");
 const depositTitle = document.getElementById("depositTitle");
-const cashappButton = document.getElementById("cashappButton");
+const squareDepositButton = document.getElementById("squareDepositButton");
 const paymentNote = document.getElementById("paymentNote");
 
 function getDepositAmount(tipoOrden) {
@@ -194,14 +158,23 @@ function getDepositAmount(tipoOrden) {
   return "$50";
 }
 
+function getDepositLink(tipoOrden) {
+  if (tipoOrden === "Flan" || tipoOrden === "Cupcakes / Postres por Docena") {
+    return dessertDepositLink;
+  }
+  return cakeDepositLink;
+}
+
 if (savedSummary) {
   const data = JSON.parse(savedSummary);
   const depositAmount = data.deposito || getDepositAmount(data.tipoOrden);
+  const depositLink = getDepositLink(data.tipoOrden);
 
-  depositIntro.innerHTML = `A <strong>${depositAmount} non-refundable deposit is required</strong> to reserve your event date after submitting your order details. The remaining balance will be paid later.`;
-  depositTitle.textContent = `Send Your ${depositAmount} Deposit`;
-  cashappButton.textContent = `Pay ${depositAmount} with Cash App`;
-  paymentNote.textContent = `Please include your full name and event date in the payment note. Orders are not officially reserved until the ${depositAmount} deposit is received.`;
+  depositIntro.innerHTML = `Se requiere un <strong>depósito no reembolsable de ${depositAmount}</strong> para reservar tu fecha.`;
+  depositTitle.textContent = `Enviar Depósito de ${depositAmount}`;
+  squareDepositButton.href = depositLink;
+  squareDepositButton.textContent = `Send Deposit Now - ${depositAmount}`;
+  paymentNote.textContent = `Por favor incluye tu nombre completo y fecha del evento en la nota del pago. Tu orden no queda reservada hasta recibir el depósito de ${depositAmount}.`;
 
   function addRow(label, value) {
     if (value && value.trim() !== "") {
@@ -212,31 +185,28 @@ if (savedSummary) {
     }
   }
 
-  addRow("Name", data.nombre);
-  addRow("Phone", data.telefono);
-  addRow("Order Type", data.tipoOrden);
-  addRow("Flavor", data.sabor);
-  addRow("Filling", data.relleno);
+  addRow("Nombre", data.nombre);
+  addRow("Teléfono", data.telefono);
+  addRow("Tipo de Orden", data.tipoOrden);
+  addRow("Sabor", data.sabor);
+  addRow("Relleno", data.relleno);
   addRow("Frosting", data.frosting);
-  addRow("Cake Size", data.tamano);
+  addRow("Tamaño", data.tamano);
 
-  if (data.tipoOrden === "Flan") {
-    addRow("Flan Quantity", data.cantidadFlan);
-  }
+  if (data.tipoOrden === "Flan") addRow("Cantidad de Flanes", data.cantidadFlan);
+  if (data.tipoOrden === "Cupcakes / Postres por Docena") addRow("Docenas", data.cantidadDocenas);
 
-  if (data.tipoOrden === "Cupcakes / Postres por Docena") {
-    addRow("Dozens", data.cantidadDocenas);
-  }
+  addRow("Fecha", data.fecha);
+  addRow("Alergias / Notas", data.alergias);
+  addRow("Precio Estimado", data.precioEstimado);
+  addRow("Depósito Requerido", depositAmount);
 
-  addRow("Needed Date", data.fecha);
-  addRow("Allergies / Notes", data.alergias);
-  addRow("Estimated Starting Price", data.precioEstimado);
-  addRow("Deposit Required", depositAmount);
 } else {
   summarySection.style.display = "none";
-  depositIntro.innerHTML = `A <strong>$50 non-refundable deposit is required</strong> to reserve your event date after submitting your order details. The remaining balance will be paid later.`;
-  depositTitle.textContent = "Send Your $50 Deposit";
-  cashappButton.textContent = "Pay $50 with Cash App";
+  depositIntro.innerHTML = `Se requiere un <strong>depósito no reembolsable de $50</strong> para reservar tu fecha.`;
+  depositTitle.textContent = "Enviar Depósito de $50";
+  squareDepositButton.href = cakeDepositLink;
+  squareDepositButton.textContent = "Send Deposit Now - $50";
 }
 </script>
 

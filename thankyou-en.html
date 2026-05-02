@@ -28,10 +28,8 @@
       margin: 0 auto 10px;
     }
 
-    header h1 {
-      margin: 0;
+    header h1, h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
     }
 
     .thankyou-section,
@@ -46,16 +44,12 @@
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
 
-    .thankyou-section h2,
-    .summary-section h2,
-    .payment-section h2 {
-      margin-top: 0;
-      font-size: 30px;
-      font-family: 'Playfair Display', serif;
-    }
-
     .summary-section {
       text-align: left;
+    }
+
+    .summary-section h2 {
+      text-align: center;
     }
 
     .summary-row {
@@ -69,15 +63,17 @@
       min-width: 160px;
     }
 
-    .payment-btn {
+    .deposit-btn {
       display: inline-block;
       background: #ff69b4;
       color: white;
-      padding: 14px 28px;
-      border-radius: 30px;
+      padding: 16px 32px;
+      border-radius: 35px;
       text-decoration: none;
-      font-weight: 600;
-      margin: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .zelle-box {
@@ -103,18 +99,19 @@
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <img src="logo.png" alt="Logo" class="logo">
+  <img src="logo.png" alt="Blanca's Cakes Logo" class="logo">
   <h1>Blanca's Cakes and Desserts</h1>
   <p>Thank you for your order</p>
 </header>
 
 <section class="thankyou-section">
-  <h2>Order Submitted Successfully!</h2>
-  <p>Your order request has been sent. We will review your details and contact you shortly.</p>
-  <p id="depositIntro">A deposit is required to reserve your date after submitting your order.</p>
+  <h2>Order Submitted!</h2>
+  <p>Your order request was sent successfully. We will review the details and contact you soon.</p>
+  <p id="depositIntro">A deposit is required to reserve your date.</p>
 </section>
 
 <section class="summary-section" id="summarySection">
@@ -123,9 +120,11 @@
 </section>
 
 <section class="payment-section">
-  <h2 id="depositTitle">Send Your Deposit</h2>
+  <h2 id="depositTitle">Send Deposit</h2>
 
-  <a href="https://cash.app/$blancaspasteles" target="_blank" class="payment-btn" id="cashappButton">Pay Deposit with Cash App</a>
+  <a href="#" target="_blank" class="deposit-btn" id="squareDepositButton">
+    Send Deposit Now
+  </a>
 
   <div class="zelle-box">
     <strong>Zelle:</strong> 901-289-3587
@@ -141,12 +140,15 @@
 </div>
 
 <script>
+const cakeDepositLink = "https://square.link/u/6fE7tsoH";
+const dessertDepositLink = "https://square.link/u/f2TVFOrY";
+
 const savedSummary = localStorage.getItem("resumenOrdenBlancas");
 const orderSummary = document.getElementById("orderSummary");
 const summarySection = document.getElementById("summarySection");
 const depositIntro = document.getElementById("depositIntro");
 const depositTitle = document.getElementById("depositTitle");
-const cashappButton = document.getElementById("cashappButton");
+const squareDepositButton = document.getElementById("squareDepositButton");
 const paymentNote = document.getElementById("paymentNote");
 
 function getDepositAmount(tipoOrden) {
@@ -156,14 +158,23 @@ function getDepositAmount(tipoOrden) {
   return "$50";
 }
 
+function getDepositLink(tipoOrden) {
+  if (tipoOrden === "Flan" || tipoOrden === "Cupcakes / Postres por Docena") {
+    return dessertDepositLink;
+  }
+  return cakeDepositLink;
+}
+
 if (savedSummary) {
   const data = JSON.parse(savedSummary);
   const depositAmount = data.deposito || getDepositAmount(data.tipoOrden);
+  const depositLink = getDepositLink(data.tipoOrden);
 
-  depositIntro.innerHTML = `A <strong>${depositAmount} non-refundable deposit is required</strong> to reserve your event date.`;
-  depositTitle.textContent = `Send Your ${depositAmount} Deposit`;
-  cashappButton.textContent = `Pay ${depositAmount} with Cash App`;
-  paymentNote.textContent = `Please include your full name and event date in the payment note.`;
+  depositIntro.innerHTML = `A <strong>${depositAmount} non-refundable deposit is required</strong> to reserve your date.`;
+  depositTitle.textContent = `Send ${depositAmount} Deposit`;
+  squareDepositButton.href = depositLink;
+  squareDepositButton.textContent = `Send Deposit Now - ${depositAmount}`;
+  paymentNote.textContent = `Please include your full name and event date in the payment note. Your order is not reserved until the ${depositAmount} deposit is received.`;
 
   function addRow(label, value) {
     if (value && value.trim() !== "") {
@@ -188,10 +199,14 @@ if (savedSummary) {
   addRow("Needed Date", data.fecha);
   addRow("Allergies / Notes", data.alergias);
   addRow("Estimated Starting Price", data.precioEstimado);
-  addRow("Deposit Required", depositAmount);
+  addRow("Required Deposit", depositAmount);
 
 } else {
   summarySection.style.display = "none";
+  depositIntro.innerHTML = `A <strong>$50 non-refundable deposit is required</strong> to reserve your date.`;
+  depositTitle.textContent = "Send $50 Deposit";
+  squareDepositButton.href = cakeDepositLink;
+  squareDepositButton.textContent = "Send Deposit Now - $50";
 }
 </script>
 
