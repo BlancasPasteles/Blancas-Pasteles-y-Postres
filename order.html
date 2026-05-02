@@ -33,8 +33,19 @@
     .nav a {
       text-decoration: none;
       color: #8a2c6b;
-      margin-left: 20px;
+      margin-left: 18px;
       font-weight: 500;
+    }
+
+    .lang-switch {
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #8a2c6b;
+      text-decoration: none;
+      font-weight: 600;
     }
 
     header {
@@ -201,29 +212,6 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
 
-    .social-section {
-      text-align: center;
-      padding: 35px;
-      background: white;
-    }
-
-    .social-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-    }
-
-    .social-btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 14px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-      background: #ff69b4;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-    }
-
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -238,18 +226,11 @@
       z-index: 100;
     }
 
-    footer {
-      background-color: #f8d7e6;
-      padding: 20px;
-      margin-top: 30px;
-      text-align: center;
-      font-size: 13px;
-    }
-
     @media (max-width:700px){
       .topbar{flex-direction:column;gap:10px;}
       .logo img{width:150px;}
       .nav a{margin:8px;display:inline-block;}
+      .lang-switch{display:block;margin:8px 0;}
     }
   </style>
 </head>
@@ -265,6 +246,7 @@
     <a href="work.html">Trabajo Anterior</a>
     <a href="flavors.html">Sabores</a>
     <a href="order.html">Ordenar</a>
+    <span class="lang-switch"><strong>Español</strong> | <a href="order-en.html">English</a></span>
   </div>
 </div>
 
@@ -303,80 +285,12 @@
 <label for="telefono">Número de Teléfono</label>
 <input type="tel" id="telefono" name="Telefono" required>
 
-<div class="form-group" id="saborGroup">
-<label for="sabor">Sabor</label>
-<select id="sabor" name="Sabor">
-<option value="">Selecciona un sabor</option>
-<option>Fresa</option>
-<option>Chocolate</option>
-<option>Vainilla</option>
-<option>Red Velvet</option>
-<option>Marble: Chocolate / Vainilla</option>
-</select>
-</div>
-
-<div class="form-group" id="rellenoGroup">
-<label for="relleno">Relleno</label>
-<select id="relleno" name="Relleno">
-<option value="">Selecciona un relleno</option>
-<option>Fresas con crema</option>
-<option>Fresas con crema, coco y nuez</option>
-<option>Coco y nuez</option>
-<option>Nutella con fresas</option>
-<option>Mocha, coco y nuez</option>
-<option>Duraznos con crema</option>
-<option>Mango</option>
-<option>Cajeta y nuez</option>
-<option>Chispas de chocolate</option>
-</select>
-</div>
-
-<div class="form-group" id="frostingGroup">
-<label for="frosting">Frosting</label>
-<select id="frosting" name="Frosting">
-<option value="">Selecciona frosting</option>
-<option>Vainilla</option>
-<option>Chocolate</option>
-<option>Fresa</option>
-<option>Crema batida</option>
-<option>Buttercream</option>
-<option>No estoy seguro/a</option>
-</select>
-</div>
-
-<div class="form-group" id="tamanoGroup">
-<label for="tamano">Tamaño del Pastel</label>
-<select id="tamano" name="Tamaño" onchange="calcularPrecio()">
-<option value="">Selecciona un tamaño</option>
-<option value="Pequeño">Pequeño</option>
-<option value="Mediano">Mediano</option>
-<option value="Grande">Grande</option>
-<option value="Dos pisos">Dos pisos</option>
-<option value="No estoy seguro/a">No estoy seguro/a</option>
-</select>
-</div>
-
-<div class="form-group" id="flanCantidadGroup">
-<label for="cantidadFlan">Cantidad de Flanes</label>
-<select id="cantidadFlan" name="Cantidad de Flanes" onchange="calcularPrecio()">
-<option value="1">1 flan</option>
-<option value="2">2 flanes</option>
-<option value="3">3 flanes</option>
-<option value="4">4 flanes</option>
-<option value="5">5 flanes</option>
-</select>
-</div>
-
-<div class="form-group" id="docenaCantidadGroup">
-<label for="cantidadDocenas">Cantidad de Docenas</label>
-<select id="cantidadDocenas" name="Cantidad de Docenas" onchange="calcularPrecio()">
-<option value="1">1 docena</option>
-<option value="2">2 docenas</option>
-<option value="3">3 docenas</option>
-<option value="4">4 docenas</option>
-<option value="5">5 docenas</option>
-</select>
-</div>
+<div class="form-group" id="saborGroup"><label for="sabor">Sabor</label><select id="sabor" name="Sabor"><option value="">Selecciona un sabor</option><option>Fresa</option><option>Chocolate</option><option>Vainilla</option><option>Red Velvet</option><option>Marble: Chocolate / Vainilla</option></select></div>
+<div class="form-group" id="rellenoGroup"><label for="relleno">Relleno</label><select id="relleno" name="Relleno"><option value="">Selecciona un relleno</option><option>Fresas con crema</option><option>Fresas con crema, coco y nuez</option><option>Coco y nuez</option><option>Nutella con fresas</option><option>Mocha, coco y nuez</option><option>Duraznos con crema</option><option>Mango</option><option>Cajeta y nuez</option><option>Chispas de chocolate</option></select></div>
+<div class="form-group" id="frostingGroup"><label for="frosting">Frosting</label><select id="frosting" name="Frosting"><option value="">Selecciona frosting</option><option>Vainilla</option><option>Chocolate</option><option>Fresa</option><option>Crema batida</option><option>Buttercream</option><option>No estoy seguro/a</option></select></div>
+<div class="form-group" id="tamanoGroup"><label for="tamano">Tamaño del Pastel</label><select id="tamano" name="Tamaño" onchange="calcularPrecio()"><option value="">Selecciona un tamaño</option><option value="Pequeño">Pequeño</option><option value="Mediano">Mediano</option><option value="Grande">Grande</option><option value="Dos pisos">Dos pisos</option><option value="No estoy seguro/a">No estoy seguro/a</option></select></div>
+<div class="form-group" id="flanCantidadGroup"><label for="cantidadFlan">Cantidad de Flanes</label><select id="cantidadFlan" name="Cantidad de Flanes" onchange="calcularPrecio()"><option value="1">1 flan</option><option value="2">2 flanes</option><option value="3">3 flanes</option><option value="4">4 flanes</option><option value="5">5 flanes</option></select></div>
+<div class="form-group" id="docenaCantidadGroup"><label for="cantidadDocenas">Cantidad de Docenas</label><select id="cantidadDocenas" name="Cantidad de Docenas" onchange="calcularPrecio()"><option value="1">1 docena</option><option value="2">2 docenas</option><option value="3">3 docenas</option><option value="4">4 docenas</option><option value="5">5 docenas</option></select></div>
 
 <label for="fecha">Fecha que lo necesitas</label>
 <input type="date" id="fecha" name="Fecha" required onchange="calcularPrecio()">
@@ -398,17 +312,15 @@
 </div>
 
 <div class="rush-warning"><strong>Órdenes de último momento:</strong> mañana o pasado mañana agregan +$25.</div>
-
 <div class="deposit-warning" id="depositWarning"><strong>Importante:</strong> Se requiere un depósito no reembolsable para reservar la fecha.</div>
-
-<div class="policy-check">
-<label><input type="checkbox" required>Entiendo que se requiere un depósito no reembolsable para reservar la fecha.</label>
-</div>
+<div class="policy-check"><label><input type="checkbox" required>Entiendo que se requiere un depósito no reembolsable para reservar la fecha.</label></div>
 
 <button class="submit-btn" type="submit">Enviar Orden</button>
 
 </form>
 </div>
+
+<a class="whatsapp-float" href="https://wa.me/19012893587" target="_blank">WhatsApp Ordenar</a>
 
 <script>
 const rushFee = 25;
